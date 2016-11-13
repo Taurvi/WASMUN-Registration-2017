@@ -140,7 +140,7 @@ gulp.task('css', function () {
 // Build Fonts
 gulp.task('fonts', function () {
     gulp.src(src.fonts)
-        .pipe(gulp.dest('dest.fonts'));
+        .pipe(gulp.dest(dest.fonts));
 });
 
 // Build Images
