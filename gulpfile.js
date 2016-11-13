@@ -9,7 +9,7 @@ var fs = require('fs');
 var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
-var templateCache = require('gulp-angular-templatecache');
+// var templateCache = require('gulp-angular-templatecache');
 
 /*******************
  * LOCAL VARIABLES *
@@ -36,6 +36,7 @@ src.jsLibs = [];
 src.jsLibsMin = [];
 src.css = [];
 src.fonts = [];
+src.views = [];
 src.imgs = [];
 src.index = [];
 // Finalized Files
@@ -63,11 +64,12 @@ src.jsLibsMin.push(dir.bower + 'angular-strap/dist/angular-strap.tpl.min.js');
 src.css.push(dir.client + 'assets/css/**/*.css');
 // Fonts
 src.fonts.push(dir.bower + 'components-font-awesome/fonts/fontawesome-webfont.*')
+// Views
+// TBD: src.views.push();
 // Images
-src.images.push(dir.client + 'assets/imgs/**/*');
+src.imgs.push(dir.client + 'assets/imgs/**/*');
 // Index
-src.index.push(dir.client + 'index.html');
-
+src.index.push(dir.client + 'core/index.html');
 
 /******************
  * BUILDING TASKS *
@@ -118,7 +120,7 @@ gulp.task('js', function () {
 });
 
 // Build Views
-gulp.task('view', function() {
+gulp.task('views', function() {
     // Clear production views
     del.sync(dest.views);
     // Copy over views to Production
@@ -160,9 +162,9 @@ gulp.task('images', function () {
 // Builds index with dependent JS and CSS files
 gulp.task('index', function(){
     gulp.src(src.index)
-        .pipe( replace('<javascript library>', finalized.jsLibs) )
-        .pipe( replace('<javascript build>', finalized.js) )
-        .pipe( replace('<css>', finalized.css) )
+        .pipe( replace('<placeholder jsLibraries></placeholder>', finalized.jsLibs) )
+        .pipe( replace('<placeholder jsBuild></placeholder>', finalized.js) )
+        .pipe( replace('<placeholder css></placeholder>', finalized.css) )
         .pipe( gulp.dest(dir.public) )
         .on('end', function(){
             finalized.jsLibs = '';
@@ -177,9 +179,9 @@ gulp.task('index', function(){
 gulp.task('watch', function(){
     gulp.watch(src.js, ['js', 'css', 'index']);
     gulp.watch(src.index, ['js', 'css', 'index']);
-    gulp.watch(src.views, ['view']);
+    gulp.watch(src.views, ['views']);
     gulp.watch(src.css, ['js', 'css', 'index']);
 });
 
 // Default task
-gulp.task('default', ['fs', 'view', 'css', 'fonts', 'images', 'index', 'watch']);
+gulp.task('default', ['js', 'views', 'css', 'fonts', 'images', 'index', 'watch']);
