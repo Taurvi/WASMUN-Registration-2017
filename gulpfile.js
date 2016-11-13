@@ -49,7 +49,10 @@ finalized.css = '';
  * SETTING SOURCE FILES *
  ************************/
 // JS
-// TBD: src.js.push();
+src.js.push(dir.client + 'core/RegistrationModule.js');
+src.js.push(dir.client + 'core/Menu/MenuController.js');
+src.js.push(dir.client + 'core/Home/HomeController.js');
+src.js.push(dir.client + 'core/Footer/FooterController.js');
 // JS Lib
 src.jsLibs.push(dir.bower + 'angular/angular.js');
 src.jsLibs.push(dir.bower + 'angular-ui-router/release/angular-ui-router.js');
@@ -65,7 +68,9 @@ src.css.push(dir.client + 'assets/css/**/*.css');
 // Fonts
 src.fonts.push(dir.bower + 'components-font-awesome/fonts/fontawesome-webfont.*')
 // Views
-// TBD: src.views.push();
+src.views.push(dir.client + 'core/Menu/MenuView.html');
+src.views.push(dir.client + 'core/Home/HomeView.html');
+src.views.push(dir.client + 'core/Footer/FooterView.html');
 // Images
 src.imgs.push(dir.client + 'assets/imgs/**/*');
 // Index
@@ -89,7 +94,7 @@ gulp.task('js', function () {
             var path = src.js[i];
             var beginIndex = path.lastIndexOf('/') + 1;
             var file = path.substring(beginIndex);
-            finalized.js += '<script type=\'text/javascript\' src=\'/js/build/' + file + '\'></script>';
+            finalized.js += '<script type=\'text/javascript\' src=\'js/build/' + file + '\'></script>';
         }
 
         // Pipes all of the lib JS files
@@ -99,7 +104,7 @@ gulp.task('js', function () {
             var path = src.jsLibs[i];
             var beginIndex = path.lastIndexOf('/') + 1;
             var file = path.substring(beginIndex);
-            finalized.jsLibs += '<script type=\'text/javascript\' src=\'/js/libs/' + file + '\'></script>';
+            finalized.jsLibs += '<script type=\'text/javascript\' src=\'js/libs/' + file + '\'></script>';
         }
     } else {
         // PRODUCTION
@@ -109,13 +114,13 @@ gulp.task('js', function () {
             .pipe(uglify())
             .pipe(gulp.dest(dest.js));
         // Create the included build.js
-        finalized.js = '<script type=\'text/javascript\' src=\'/js/build/build.js\'></script>';
+        finalized.js = '<script type=\'text/javascript\' src=\'js/build/build.js\'></script>';
         // concat and minify js library from minify library source, name it libs.js, and copy to js/libs folder
         gulp.src(src.jsLibs)
             .pipe(concat('libs.js'))
             .pipe(gulp.dest(dest.jsLibs));
         // Create the included libraries
-        finalized.jsLibs = '<script type=\'text/javascript\' src=\'/js/libs/libs.js\'></script>';
+        finalized.jsLibs = '<script type=\'text/javascript\' src=\'js/libs/libs.js\'></script>';
     }
 });
 
@@ -134,7 +139,7 @@ gulp.task('css', function () {
     // copy css to public/css
     gulp.src(src.css).pipe(concat('style.css'))
         .pipe(gulp.dest(dest.css));
-    finalized.css = '<link rel="stylesheet" type="text/css" href="/css/style.css">';
+    finalized.css = '<link rel="stylesheet" type="text/css" href="css/style.css">';
 });
 
 // Build Fonts

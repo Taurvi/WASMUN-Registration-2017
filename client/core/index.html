@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="RegistrationModule" >
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/WASMUN Registration 2017/public/"/>
     <title>WASMUN Registration 2017</title>
     <!-- CSS Injection -->
     <placeholder css></placeholder>
 </head>
 <body>
-
+<div ui-view="menu"></div>
+<div ui-view="content"></div>
+<div ui-view="footer"></div>
 </body>
 <!-- JS Libraries Injection -->
 <placeholder jsLibraries></placeholder>
