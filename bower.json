@@ -1,0 +1,26 @@
+{
+  "name": "wasmun-registration-2017",
+  "description": "A super awesome registration thingy",
+  "main": "index.js",
+  "authors": [
+    "Stephen \"Taurvi\" Rimbakusumo"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Taurvi/WASMUN-Registration-2017",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.2",
+    "angular-strap": "^2.3.10"
+  },
+  "devDependencies": {
+    "components-font-awesome": "^4.7.0"
+  }
+}
