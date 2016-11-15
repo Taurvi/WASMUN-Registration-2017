@@ -167,9 +167,9 @@ gulp.task('images', function () {
 // Builds index with dependent JS and CSS files
 gulp.task('index', function(){
     gulp.src(src.index)
-        .pipe( replace('<placeholder jsLibraries></placeholder>', finalized.jsLibs) )
-        .pipe( replace('<placeholder jsBuild></placeholder>', finalized.js) )
-        .pipe( replace('<placeholder css></placeholder>', finalized.css) )
+        .pipe( replace('<!--#INJECT-JS-LIBS#-->', finalized.jsLibs) )
+        .pipe( replace('<!--#INJECT-JS#-->', finalized.js) )
+        .pipe( replace('<!--#INJECT-CSS#-->', finalized.css) )
         .pipe( gulp.dest(dir.public) )
         .on('end', function(){
             finalized.jsLibs = '';

@@ -7,13 +7,14 @@
     <base href="/WASMUN-Registration-2017/public/"/>
     <title>WASMUN Registration 2017</title>
     <!-- CSS Injection -->
-    <placeholder css></placeholder>
+    <!--#INJECT-CSS#-->
 </head>
 <body ng-app="RegistrationModule">
 <div ui-view="menu"></div>
-<!-- JS Libraries Injection -->
+<div ui-view="content"></div>
+<!--#INJECT-JS-LIBS#-->
 <placeholder jsLibraries></placeholder>
-<!-- JS Build Injection -->
+<!--#INJECT-JS#-->
 <placeholder jsBuild></placeholder>
 </body>
 </html>

@@ -18,7 +18,9 @@ RegistrationModule.config([
             views: {
                 'menu': {
                     templateUrl: 'views/MenuView.html',
-                    // controller: 'MainController'
+                },
+                'content': {
+                    templateUrl: 'views/HomeView.html'
                 }
             }
         })

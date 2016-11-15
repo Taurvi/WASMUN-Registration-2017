@@ -28,7 +28,7 @@ Yet another pretty Angular project for the non-profit, Washington State Model Un
 ## Installation
 1. Clone the repository to your desired folder.
 2. Execute `npm install`.
-3. Execute `bower install`.
+3. Execute `npm run bower install`.
 4. If you do not already have Gulp, execute `npm install -g gulp`.
 5. Decide if you are running development or production.
     * DEVELOPMENT: Execute `gulp` or `NODE_ENV=development gulp`
