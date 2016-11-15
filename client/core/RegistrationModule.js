@@ -1,32 +1,25 @@
 'use strict';
 var RegistrationModule = angular.module('RegistrationModule',
     [
-        'ui.router',
+        'ui.router'
     ]);
 
-RegistrationModule.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+RegistrationModule.config([
+    '$stateProvider',
+    '$urlRouterProvider',
+    '$locationProvider',
+    '$httpProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
-        $locationProvider.html5Mode(true);
-        $stateProvider
-            .state('RegistrationModule', {
-                url: '/',
-                views: {
-                    'menu': {
-                        templateUrl: 'views/MenuView.html',
-                        // controller: 'MenuController'
-                    },
-                    'content': {
-                        templateUrl: 'views/HomeView.html',
-                        // controller: 'HomeController'
-                    },
-                    'footer': {
-                        templateUrl: 'views/FooterView.html'
-                    }
+    $locationProvider.html5Mode(true);
+    $urlRouterProvider.otherwise('/');
+    $stateProvider
+        .state('home', {
+            url: '/',
+            views: {
+                'menu': {
+                    templateUrl: 'views/MenuView.html',
+                    // controller: 'MainController'
                 }
-            });
-        $urlRouterProvider.otherwise(function($injector, $location){
-            var $state = $injector.get("$state");
-            $state.go('RegistrationModule');
-        });
-    }
-]);
+            }
+        })
+}]);
