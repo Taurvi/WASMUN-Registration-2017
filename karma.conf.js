@@ -9,6 +9,7 @@ var dir = {};
 dir.bower = 'bower_components/';
 dir.client = 'client/';
 dir.public = 'public/';
+dir.shared = dir.client + 'shared/';
 // Source Files
 var src = {};
 src.js = [];
@@ -26,8 +27,11 @@ src.js.push(dir.client + 'core/RegistrationModule.js');
 src.js.push(dir.client + 'core/Menu/MenuController.js');
 src.js.push(dir.client + 'core/Home/HomeController.js');
 src.js.push(dir.client + 'core/Footer/FooterController.js');
+// JS Classes
+src.js.push(dir.shared + 'classes/ContactInfoClass.js');
 // Tests
 src.js.push(dir.client + 'core/RegistrationModule.test.js');
+src.js.push(dir.shared + 'classes/ContactInfoClass.test.js');
 
 module.exports = function(config) {
     config.set({
