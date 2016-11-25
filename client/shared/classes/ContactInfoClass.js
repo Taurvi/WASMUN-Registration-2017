@@ -1,9 +1,13 @@
 'use strict';
 var RegistrationModule = angular.module('RegistrationModule')
 RegistrationModule.factory('ContactInfoClass', [function () {
-    function ContactInfoClass() {
+    function ContactInfoClass(name, email, phone) {
+        if (!name || !email || !phone)
+            throw "ContactInfoClass requires three parameters."
         var self = this;
-        self._name = 'fooBar';
+        self._name = name;
+        self._email = email;
+        self._phone = phone;
     }
 
     Object.defineProperties(ContactInfoClass.prototype, {
@@ -11,8 +15,24 @@ RegistrationModule.factory('ContactInfoClass', [function () {
             get: function () {
                 return this._name;
             },
-            set: function(newName) {
-                this._name = newName;
+            set: function(name) {
+                this._name = name;
+            }
+        },
+        'email': {
+            get: function() {
+                return this._email;
+            },
+            set: function(email) {
+                this._email = email;
+            }
+        },
+        'phone': {
+            get: function() {
+                return this._phone;
+            },
+            set: function(phone) {
+                this._phone = phone;
             }
         }
     });
@@ -21,8 +41,24 @@ RegistrationModule.factory('ContactInfoClass', [function () {
         return this.name;
     }
 
-    ContactInfoClass.prototype.setName = function(newName) {
-        this.name = newName;
+    ContactInfoClass.prototype.setName = function(name) {
+        this.name = name;
+    }
+
+    ContactInfoClass.prototype.getEmail = function() {
+        return this.email;
+    }
+
+    ContactInfoClass.prototype.setEmail = function(email) {
+        this.email = email;
+    }
+
+    ContactInfoClass.prototype.getPhone = function() {
+        return this.phone;
+    }
+
+    ContactInfoClass.prototype.setPhone = function(phone) {
+        this.phone = phone;
     }
 
     return ContactInfoClass;
