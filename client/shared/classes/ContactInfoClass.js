@@ -1,9 +1,9 @@
 'use strict';
-var RegistrationModule = angular.module('RegistrationModule')
+var RegistrationModule = angular.module('RegistrationModule');
 RegistrationModule.factory('ContactInfoClass', [function () {
     function ContactInfoClass(name, email, phone) {
         if (!name || !email || !phone)
-            throw "ContactInfoClass requires three parameters."
+            throw "ContactInfoClass requires three parameters.";
         var self = this;
         self._name = name;
         self._email = email;
@@ -39,27 +39,27 @@ RegistrationModule.factory('ContactInfoClass', [function () {
 
     ContactInfoClass.prototype.getName = function() {
         return this.name;
-    }
+    };
 
     ContactInfoClass.prototype.setName = function(name) {
         this.name = name;
-    }
+    };
 
     ContactInfoClass.prototype.getEmail = function() {
         return this.email;
-    }
+    };
 
     ContactInfoClass.prototype.setEmail = function(email) {
         this.email = email;
-    }
+    };
 
     ContactInfoClass.prototype.getPhone = function() {
         return this.phone;
-    }
+    };
 
     ContactInfoClass.prototype.setPhone = function(phone) {
         this.phone = phone;
-    }
+    };
 
     return ContactInfoClass;
 }]);

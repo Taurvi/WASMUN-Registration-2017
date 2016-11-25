@@ -1,9 +1,9 @@
 'use strict';
-var RegistrationModule = angular.module('RegistrationModule')
+var RegistrationModule = angular.module('RegistrationModule');
 RegistrationModule.factory('CountryClass', [function () {
     function CountryClass(name, committee) {
         if (!name || !committee)
-            throw "CountryClass requires two parameters."
+            throw "CountryClass requires two parameters.";
         var self = this;
         self._name = name;
         self._committee = committee;
@@ -30,19 +30,19 @@ RegistrationModule.factory('CountryClass', [function () {
 
     CountryClass.prototype.getName = function() {
         return this.name;
-    }
+    };
 
     CountryClass.prototype.setName = function(name) {
         this.name = name;
-    }
+    };
 
     CountryClass.prototype.getCommittee = function() {
         return this.committee;
-    }
+    };
 
     CountryClass.prototype.setCommittee = function(committee) {
         this.committee = committee;
-    }
+    };
 
     return CountryClass;
 }]);

@@ -30,10 +30,12 @@ src.js.push(dir.client + 'core/Footer/FooterController.js');
 // JS Classes
 src.js.push(dir.shared + 'classes/ContactInfoClass.js');
 src.js.push(dir.shared + 'classes/CountryClass.js');
+src.js.push(dir.shared + 'classes/CountrySelectionClass.js');
 // Tests
 src.js.push(dir.client + 'core/RegistrationModule.test.js');
 src.js.push(dir.shared + 'classes/ContactInfoClass.test.js');
 src.js.push(dir.shared + 'classes/CountryClass.test.js');
+src.js.push(dir.shared + 'classes/CountrySelectionClass.test.js');
 
 module.exports = function(config) {
     config.set({
