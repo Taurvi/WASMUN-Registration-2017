@@ -31,11 +31,13 @@ src.js.push(dir.client + 'core/Footer/FooterController.js');
 src.js.push(dir.shared + 'classes/ContactInfoClass.js');
 src.js.push(dir.shared + 'classes/CountryClass.js');
 src.js.push(dir.shared + 'classes/CountrySelectionClass.js');
+src.js.push(dir.shared + 'classes/SchoolInformationClass.js');
 // Tests
 src.js.push(dir.client + 'core/RegistrationModule.test.js');
 src.js.push(dir.shared + 'classes/ContactInfoClass.test.js');
 src.js.push(dir.shared + 'classes/CountryClass.test.js');
 src.js.push(dir.shared + 'classes/CountrySelectionClass.test.js');
+src.js.push(dir.shared + 'classes/SchoolInformationClass.test.js');
 
 module.exports = function(config) {
     config.set({
