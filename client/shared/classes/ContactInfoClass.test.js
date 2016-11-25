@@ -3,7 +3,6 @@ describe('ContactInfoClass Tests', function(){
     var ContactInfoClass;
     beforeEach(angular.mock.module('RegistrationModule'));
 
-    // Set our injected Users factory (_Users_) to our local Users variable
     beforeEach(inject(function(_ContactInfoClass_) {
         ContactInfoClass = new _ContactInfoClass_('fooBar', 'baz@foo.com', '1234567890');
     }));
@@ -25,7 +24,7 @@ describe('ContactInfoClass Tests', function(){
             ContactInfoClass.setName('barFoo');
             expect(ContactInfoClass.getName()).toBe('barFoo');
         });
-    })
+    });
 
     describe('+ email tests', function() {
         it('class should have getEmail defined', function() {
