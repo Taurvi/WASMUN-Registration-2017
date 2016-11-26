@@ -16,20 +16,19 @@ describe('CountrySelectionClass Tests', function(){
             expect(CountrySelectionClass.getCountries()).toBeDefined();
         });
 
-        it('class should add CountryClass("qux", "foo")', inject(function(_CountryClass_) {
-            var sampleSelection = [];
-            sampleSelection.push(new _CountryClass_('qux', 'foo'));
-            CountrySelectionClass.addCountry('qux', 'foo');
-            expect(CountrySelectionClass.getCountries().toString()).toEqual(sampleSelection.toString());
-        }));
-
         it('class should add more countries', inject(function(_CountryClass_) {
             var sampleSelection = [];
             sampleSelection.push(new _CountryClass_('foo', 'bar'));
             sampleSelection.push(new _CountryClass_('baz', 'qux'));
             CountrySelectionClass.addCountry('foo', 'bar');
             CountrySelectionClass.addCountry('baz', 'qux');
-            expect(CountrySelectionClass.getCountries().toString()).toEqual(sampleSelection.toString());
+
+            var selection = CountrySelectionClass.getCountries();
+
+            expect(selection[0].getName()).toBe(sampleSelection[0].getName());
+            expect(selection[0].getCommittee()).toBe(sampleSelection[0].getCommittee());
+            expect(selection[1].getName()).toBe(sampleSelection[1].getName());
+            expect(selection[1].getCommittee()).toBe(sampleSelection[1].getCommittee());
         }));
 
         it('class should have getCount defined', function() {
@@ -59,8 +58,14 @@ describe('CountrySelectionClass Tests', function(){
             CountrySelectionClass.addCountry('foo', 'bar');
             CountrySelectionClass.addCountry('baz', 'qux');
 
-            expect(CountrySelectionClass.removeCountry(0).toString()).toEqual(removedSelection.toString());
-            expect(CountrySelectionClass.getCountries().toString()).toEqual(sampleSelection.toString());
+            var selection = CountrySelectionClass.getCountries();
+            var removed = CountrySelectionClass.removeCountry(0)
+
+            expect(selection[0].getName()).toBe(sampleSelection[0].getName());
+            expect(selection[0].getCommittee()).toBe(sampleSelection[0].getCommittee());
+
+            expect(removed[0].getName()).toBe(removedSelection[0].getName());
+            expect(removed[0].getCommittee()).toBe(removedSelection[0].getCommittee());
         }));
     });
 });
