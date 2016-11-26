@@ -44,16 +44,11 @@ describe('CountrySelectionClass Tests', function(){
             expect(CountrySelectionClass.getCount()).toEqual(2);
         }));
 
-        it('class should have removeCountry defined', function() {
-            expect(CountrySelectionClass.removeCountry()).toBeDefined();
-        });
-
         it('class should remove country at index 0', inject(function(_CountryClass_) {
             var sampleSelection = [];
             sampleSelection.push(new _CountryClass_('baz', 'qux'));
 
-            var removedSelection = [];
-            removedSelection.push(new _CountryClass_('foo', 'bar'));
+            var removedSelection = new _CountryClass_('foo', 'bar');
 
             CountrySelectionClass.addCountry('foo', 'bar');
             CountrySelectionClass.addCountry('baz', 'qux');
@@ -64,8 +59,8 @@ describe('CountrySelectionClass Tests', function(){
             expect(selection[0].getName()).toBe(sampleSelection[0].getName());
             expect(selection[0].getCommittee()).toBe(sampleSelection[0].getCommittee());
 
-            expect(removed[0].getName()).toBe(removedSelection[0].getName());
-            expect(removed[0].getCommittee()).toBe(removedSelection[0].getCommittee());
+            expect(removed.getName()).toBe(removedSelection.getName());
+            expect(removed.getCommittee()).toBe(removedSelection.getCommittee());
         }));
     });
 });

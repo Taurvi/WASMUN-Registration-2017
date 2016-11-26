@@ -48,7 +48,7 @@ RegistrationModule.factory('DelegationContactsClass', ['ContactInfoClass', funct
         var tempHeadDelegates = this.headDelegates;
         var removed = tempHeadDelegates.splice(index, 1);
         this.headDelegates = tempHeadDelegates;
-        return removed;
+        return removed[0];
     };
 
     DelegationContactsClass.prototype.editHeadDelegate = function(index, name, email, phone) {

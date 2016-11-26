@@ -34,17 +34,19 @@ src.js.push(dir.client + 'core/Footer/FooterController.js');
 src.js.push(dir.shared + 'classes/ContactInfoClass.js');
 src.js.push(dir.shared + 'classes/CountryClass.js');
 src.js.push(dir.shared + 'classes/CountrySelectionClass.js');
-src.js.push(dir.shared + 'classes/SchoolInformationClass.js');
+src.js.push(dir.shared + 'classes/SchoolInfoClass.js');
 src.js.push(dir.shared + 'classes/DelegationInfoClass.js');
 src.js.push(dir.shared + 'classes/DelegationContactsClass.js');
+src.js.push(dir.shared + 'classes/RegistrationClass.js');
 // Tests
 src.js.push(dir.tests + 'core/RegistrationModule.test.js');
 src.js.push(dir.testsShared + 'classes/ContactInfoClass.test.js');
 src.js.push(dir.testsShared + 'classes/CountryClass.test.js');
 src.js.push(dir.testsShared + 'classes/CountrySelectionClass.test.js');
-src.js.push(dir.testsShared + 'classes/SchoolInformationClass.test.js');
+src.js.push(dir.testsShared + 'classes/SchoolInfoClass.test.js');
 src.js.push(dir.testsShared + 'classes/DelegationInfoClass.test.js');
 src.js.push(dir.testsShared + 'classes/DelegationContactsClass.test.js');
+src.js.push(dir.testsShared + 'classes/RegistrationClass.test.js');
 
 module.exports = function(config) {
     config.set({

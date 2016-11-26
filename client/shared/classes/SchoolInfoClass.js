@@ -1,13 +1,13 @@
 'use strict';
 var RegistrationModule = angular.module('RegistrationModule');
-RegistrationModule.factory('SchoolInformationClass', [function () {
-    function SchoolInformationClass() {
+RegistrationModule.factory('SchoolInfoClass', [function () {
+    function SchoolInfoClass() {
         var self = this;
         self._name = '';
         self._address = '';
     }
 
-    Object.defineProperties(SchoolInformationClass.prototype, {
+    Object.defineProperties(SchoolInfoClass.prototype, {
         'name': {
             get: function () {
                 return this._name;
@@ -26,21 +26,21 @@ RegistrationModule.factory('SchoolInformationClass', [function () {
         }
     });
 
-    SchoolInformationClass.prototype.getName = function() {
+    SchoolInfoClass.prototype.getName = function() {
         return this.name;
     };
 
-    SchoolInformationClass.prototype.setName = function(name) {
+    SchoolInfoClass.prototype.setName = function(name) {
         this.name = name;
     };
 
-    SchoolInformationClass.prototype.getAddress = function() {
+    SchoolInfoClass.prototype.getAddress = function() {
         return this.address;
     };
 
-    SchoolInformationClass.prototype.setAddress = function(address) {
+    SchoolInfoClass.prototype.setAddress = function(address) {
         this.address = address;
     };
 
-    return SchoolInformationClass;
+    return SchoolInfoClass;
 }]);

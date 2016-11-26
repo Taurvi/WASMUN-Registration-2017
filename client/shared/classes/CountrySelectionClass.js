@@ -35,7 +35,7 @@ RegistrationModule.factory('CountrySelectionClass', ['CountryClass', function (C
         var tempArray = this.selections;
         var removed = tempArray.splice(index, 1);
         this.selections = tempArray;
-        return removed;
+        return removed[0];
     };
 
     return CountrySelectionClass;

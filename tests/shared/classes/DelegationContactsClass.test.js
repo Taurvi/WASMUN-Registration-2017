@@ -34,7 +34,7 @@ describe('DelegationContactsClass Tests', function(){
 
         it('class should add a head delegate ContactInfoClass("foo", "bar@baz", "1234567890")', inject(function(_ContactInfoClass_) {
             var sample = [];
-            sample.push(new _ContactInfoClass_('foo', 'bar@baz', '1234567890'))
+            sample.push(new _ContactInfoClass_('foo', 'bar@baz', '1234567890'));
             DelegationContactsClass.addHeadDelegate('foo', 'bar@baz', '1234567890');
             var headDelegates = DelegationContactsClass.getHeadDelegates();
             expect(headDelegates[0].getName()).toBe(sample[0].getName());
@@ -44,18 +44,20 @@ describe('DelegationContactsClass Tests', function(){
 
         it('class should add two head delegates ContactInfoClass("foo", "bar@baz", "1234567890") and ContactInfoClass("qux", "baz@bar", "0987654321") and removes index 0', inject(function(_ContactInfoClass_) {
             var sample = [];
-            sample.push(new _ContactInfoClass_('qux', 'baz@bar', '0987654321'))
-            var sampleRemoved = [];
-            sampleRemoved.push(new _ContactInfoClass_('foo', 'bar@baz', '1234567890'))
+            sample.push(new _ContactInfoClass_('qux', 'baz@bar', '0987654321'));
+            var sampleRemoved = new _ContactInfoClass_('foo', 'bar@baz', '1234567890');
             DelegationContactsClass.addHeadDelegate('foo', 'bar@baz', '1234567890');
             DelegationContactsClass.addHeadDelegate('qux', 'baz@bar', '0987654321');
-            expect(DelegationContactsClass.removeHeadDelegate(0).toString()).toBe(sampleRemoved.toString());
 
+            var removed = DelegationContactsClass.removeHeadDelegate(0);
             var headDelegates = DelegationContactsClass.getHeadDelegates();
 
             expect(headDelegates[0].getName()).toBe(sample[0].getName());
             expect(headDelegates[0].getEmail()).toBe(sample[0].getEmail());
             expect(headDelegates[0].getPhone()).toBe(sample[0].getPhone());
+            expect(removed.getName()).toBe(sampleRemoved.getName());
+            expect(removed.getEmail()).toBe(sampleRemoved.getEmail());
+            expect(removed.getPhone()).toBe(sampleRemoved.getPhone());
         }));
 
         it('class should add two head delegates ContactInfoClass("foo", "bar@baz", "1234567890") and ContactInfoClass("qux", "baz@bar", "0987654321") and edits index 1 to be ContactInfoClass("baz","qux@foo", "0000000000")', inject(function(_ContactInfoClass_) {
