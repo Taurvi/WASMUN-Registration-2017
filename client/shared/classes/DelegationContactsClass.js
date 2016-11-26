@@ -13,17 +13,17 @@ RegistrationModule.factory('DelegationContactsClass', ['ContactInfoClass', funct
 
     // Defines getters and setters for protected variables.
     Object.defineProperties(DelegationContactsClass.prototype, {
-       'advisor': {
-           get: function() {
-               return this._advisor;
-           }
-       },
+        'advisor': {
+            get: function() {
+                return this._advisor;
+            }
+        },
         'headDelegates': {
-           get: function() {
-               return this._headDelegates;
-           },
+            get: function() {
+                return this._headDelegates;
+            },
             set: function(headDelegates) {
-               this._headDelegates = headDelegates;
+                this._headDelegates = headDelegates;
             }
         }
     });
