@@ -3,8 +3,8 @@ var RegistrationModule = angular.module('RegistrationModule');
 RegistrationModule.factory('SchoolInformationClass', [function () {
     function SchoolInformationClass() {
         var self = this;
-        self._name = 'bar';
-        self._address = 'baz';
+        self._name = '';
+        self._address = '';
     }
 
     Object.defineProperties(SchoolInformationClass.prototype, {

@@ -16,10 +16,6 @@ describe('SchoolInformationClass Tests', function(){
             expect(SchoolInformationClass.getName()).toBeDefined();
         });
 
-        it('class should have getName be "bar"', function() {
-            expect(SchoolInformationClass.getName()).toBe('bar');
-        });
-
         it('class should setName to be "bar"', function() {
             SchoolInformationClass.setName('bar');
             expect(SchoolInformationClass.getName()).toBe('bar');
@@ -29,10 +25,6 @@ describe('SchoolInformationClass Tests', function(){
     describe('+ address tests:', function() {
         it('class should have getAddress defined', function () {
             expect(SchoolInformationClass.getAddress()).toBeDefined();
-        });
-
-        it('class should have getAddress be "baz"', function() {
-            expect(SchoolInformationClass.getAddress()).toBe('baz');
         });
 
         it('class should setAddress to be "qux"', function() {
