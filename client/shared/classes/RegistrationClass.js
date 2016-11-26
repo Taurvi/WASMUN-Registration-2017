@@ -6,6 +6,10 @@ RegistrationModule.factory('RegistrationClass', [
     'CountrySelectionClass',
     'DelegationContactsClass', function (DelegationInfoClass, SchoolInfoClass, CountrySelectionClass, DelegationContactsClass) {
 
+    /**
+     * Stores the registration information of a delegation.
+     * @constructor
+     */
     function RegistrationClass() {
         var self = this;
         self._delegationInfo = new DelegationInfoClass();
@@ -14,6 +18,8 @@ RegistrationModule.factory('RegistrationClass', [
         self._delegationContacts = new DelegationContactsClass();
     }
 
+
+    // Defines getters and setters for protected variables.
     Object.defineProperties(RegistrationClass.prototype, {
         'delegationInfo': {
             get: function() {
@@ -37,18 +43,34 @@ RegistrationModule.factory('RegistrationClass', [
         }
     });
 
+    /**
+     * Gets the delegation information.
+     * @returns DelegationInformationClass - information on the delegation.
+     */
     RegistrationClass.prototype.getDelegationInfo = function() {
         return this.delegationInfo;
     };
 
+    /**
+     * Gets the school information.
+     * @returns SchoolInfoClass - information on the school.
+     */
     RegistrationClass.prototype.getSchoolInfo = function() {
         return this.schoolInfo;
     };
 
+    /**
+     * Gets the country selection information.
+     * @returns CountrySelectionClass - information on the delegation's country seletion.
+     */
     RegistrationClass.prototype.getCountrySelection = function() {
         return this._countrySelection;
     };
 
+    /**
+     * Gets the delegation contact information.
+     * @returns DelegationContactsClass - information on the delegation's leadership.
+     */
     RegistrationClass.prototype.getDelegationContacts = function() {
         return this.delegationContacts;
     };

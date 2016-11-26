@@ -1,6 +1,10 @@
 'use strict';
 var RegistrationModule = angular.module('RegistrationModule');
 RegistrationModule.factory('DelegationInfoClass', [function() {
+    /**
+     * Stores information about the delegation.
+     * @constructor
+     */
     function DelegationInfoClass() {
         var self = this;
         self._size = 0;
@@ -8,6 +12,7 @@ RegistrationModule.factory('DelegationInfoClass', [function() {
         self._discount = false;
     }
 
+    // Defines getters and setters for protected variables.
     Object.defineProperties(DelegationInfoClass.prototype, {
         'size': {
             get: function() {
@@ -35,26 +40,50 @@ RegistrationModule.factory('DelegationInfoClass', [function() {
         }
     });
 
+    /**
+     * Gets the stored size of the delegation.
+     * @returns int - the size of the delegation.
+     */
     DelegationInfoClass.prototype.getSize = function() {
         return this.size;
     };
 
+    /**
+     * Sets the size of the delegation.
+     * @param size int - the size of the delegation.
+     */
     DelegationInfoClass.prototype.setSize = function(size) {
-        return this.size = size;
+        this.size = size;
     };
 
+    /**
+     * Gets the cost of the delegation.
+     * @returns int - the cost of the delegation.
+     */
     DelegationInfoClass.prototype.getCost = function() {
         return this.cost;
     };
 
+    /**
+     * Sets the cost of the delegation.
+     * @param cost int - the cost of the delegation.
+     */
     DelegationInfoClass.prototype.setCost = function(cost) {
         this.cost = cost;
     };
 
+    /**
+     * Gets whether or not the delegation has a discount.
+     * @returns Boolean - if the delegation has a discount.
+     */
     DelegationInfoClass.prototype.getDiscount = function() {
         return this.discount;
     };
 
+    /**
+     * Sets whether the delegation has a discount.
+     * @param discount Boolean - if the delegation has a discount.
+     */
     DelegationInfoClass.prototype.setDiscount = function(discount) {
         this.discount = discount;
     };

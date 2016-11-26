@@ -1,6 +1,13 @@
 'use strict';
 var RegistrationModule = angular.module('RegistrationModule');
 RegistrationModule.factory('ContactInfoClass', [function () {
+    /**
+     * Stores contact information.
+     * @param name String - The name of the contact.
+     * @param email String -  The email of the contact.
+     * @param phone String - The phone number of the contact.
+     * @constructor
+     */
     function ContactInfoClass(name, email, phone) {
         var self = this;
         self._name = name;
@@ -8,6 +15,7 @@ RegistrationModule.factory('ContactInfoClass', [function () {
         self._phone = phone;
     }
 
+    // Defines getters and setters for protected variables.
     Object.defineProperties(ContactInfoClass.prototype, {
         'name': {
             get: function () {
@@ -35,26 +43,50 @@ RegistrationModule.factory('ContactInfoClass', [function () {
         }
     });
 
+    /**
+     * Gets the stored name of the contact.
+     * @returns String - the name of the contact.
+     */
     ContactInfoClass.prototype.getName = function() {
         return this.name;
     };
 
+    /**
+     * Sets the name of the contact.
+     * @param name String - the name of the contact.
+     */
     ContactInfoClass.prototype.setName = function(name) {
         this.name = name;
     };
 
+    /**
+     * Gets the stored email of the contact
+     * @returns String - the email of the contact.
+     */
     ContactInfoClass.prototype.getEmail = function() {
         return this.email;
     };
 
+    /**
+     * Sets the email of the contact.
+     * @param email String - the email of the contact.
+     */
     ContactInfoClass.prototype.setEmail = function(email) {
         this.email = email;
     };
 
+    /**
+     * Gets the stored phone number of the contact.
+     * @returns String - the phone number of the contact.
+     */
     ContactInfoClass.prototype.getPhone = function() {
         return this.phone;
     };
 
+    /**
+     * Sets the phone number of the contact.
+     * @param phone String - the phone number of the contact.
+     */
     ContactInfoClass.prototype.setPhone = function(phone) {
         this.phone = phone;
     };
