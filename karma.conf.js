@@ -10,6 +10,9 @@ dir.bower = 'bower_components/';
 dir.client = 'client/';
 dir.public = 'public/';
 dir.shared = dir.client + 'shared/';
+
+dir.tests = 'tests/';
+dir.testsShared = dir.tests + 'shared/';
 // Source Files
 var src = {};
 src.js = [];
@@ -35,13 +38,13 @@ src.js.push(dir.shared + 'classes/SchoolInformationClass.js');
 src.js.push(dir.shared + 'classes/DelegationInfoClass.js');
 src.js.push(dir.shared + 'classes/DelegationContactsClass.js');
 // Tests
-src.js.push(dir.client + 'core/RegistrationModule.test.js');
-src.js.push(dir.shared + 'classes/ContactInfoClass.test.js');
-src.js.push(dir.shared + 'classes/CountryClass.test.js');
-src.js.push(dir.shared + 'classes/CountrySelectionClass.test.js');
-src.js.push(dir.shared + 'classes/SchoolInformationClass.test.js');
-src.js.push(dir.shared + 'classes/DelegationInfoClass.test.js');
-src.js.push(dir.shared + 'classes/DelegationContactsClass.test.js');
+src.js.push(dir.tests + 'core/RegistrationModule.test.js');
+src.js.push(dir.testsShared + 'classes/ContactInfoClass.test.js');
+src.js.push(dir.testsShared + 'classes/CountryClass.test.js');
+src.js.push(dir.testsShared + 'classes/CountrySelectionClass.test.js');
+src.js.push(dir.testsShared + 'classes/SchoolInformationClass.test.js');
+src.js.push(dir.testsShared + 'classes/DelegationInfoClass.test.js');
+src.js.push(dir.testsShared + 'classes/DelegationContactsClass.test.js');
 
 module.exports = function(config) {
     config.set({
