@@ -49,15 +49,15 @@ RegistrationModule.factory('DelegationInfoClass', [function() {
 
     DelegationInfoClass.prototype.setCost = function(cost) {
         this.cost = cost;
-    }
+    };
 
     DelegationInfoClass.prototype.getDiscount = function() {
         return this.discount;
-    }
+    };
 
     DelegationInfoClass.prototype.setDiscount = function(discount) {
         this.discount = discount;
-    }
+    };
 
     return DelegationInfoClass;
 }]);

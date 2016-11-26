@@ -33,6 +33,7 @@ src.js.push(dir.shared + 'classes/CountryClass.js');
 src.js.push(dir.shared + 'classes/CountrySelectionClass.js');
 src.js.push(dir.shared + 'classes/SchoolInformationClass.js');
 src.js.push(dir.shared + 'classes/DelegationInfoClass.js');
+src.js.push(dir.shared + 'classes/DelegationContactsClass.js');
 // Tests
 src.js.push(dir.client + 'core/RegistrationModule.test.js');
 src.js.push(dir.shared + 'classes/ContactInfoClass.test.js');
@@ -40,6 +41,7 @@ src.js.push(dir.shared + 'classes/CountryClass.test.js');
 src.js.push(dir.shared + 'classes/CountrySelectionClass.test.js');
 src.js.push(dir.shared + 'classes/SchoolInformationClass.test.js');
 src.js.push(dir.shared + 'classes/DelegationInfoClass.test.js');
+src.js.push(dir.shared + 'classes/DelegationContactsClass.test.js');
 
 module.exports = function(config) {
     config.set({

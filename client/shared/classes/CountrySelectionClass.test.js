@@ -16,7 +16,7 @@ describe('CountrySelectionClass Tests', function(){
             expect(CountrySelectionClass.getCountries()).toBeDefined();
         });
 
-        it('class should add a country (country: "qux", committee: "foo")', inject(function(_CountryClass_) {
+        it('class should add CountryClass("qux", "foo")', inject(function(_CountryClass_) {
             var sampleSelection = [];
             sampleSelection.push(new _CountryClass_('qux', 'foo'));
             CountrySelectionClass.addCountry('qux', 'foo');

@@ -2,8 +2,6 @@
 var RegistrationModule = angular.module('RegistrationModule');
 RegistrationModule.factory('ContactInfoClass', [function () {
     function ContactInfoClass(name, email, phone) {
-        if (!name || !email || !phone)
-            throw "ContactInfoClass requires three parameters.";
         var self = this;
         self._name = name;
         self._email = email;
