@@ -1,8 +1,17 @@
 'use strict';
 var RegistrationModule = angular.module('RegistrationModule',
     [
-        'ui.router'
+        'ui.router',
+        'btford.socket-io'
     ]);
+
+RegistrationModule.factory('mySocket', function (socketFactory) {
+    var myIoSocket = io.connect('http://localhost:3000');
+    var mySocket = socketFactory({
+        ioSocket: myIoSocket
+    });
+    return mySocket;
+});
 
 RegistrationModule.config([
     '$stateProvider',
@@ -20,7 +29,8 @@ RegistrationModule.config([
                     templateUrl: 'views/MenuView.html'
                 },
                 'content': {
-                    templateUrl: 'views/HomeView.html'
+                    templateUrl: 'views/HomeView.html',
+                    controller: 'HomeController'
                 }
             }
         })
