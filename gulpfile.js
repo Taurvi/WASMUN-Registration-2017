@@ -70,6 +70,7 @@ src.jsLibsMin.push(dir.bower + 'socket.io-client/dist/socket.io.js/socket.io.min
 src.jsLibsMin.push(dir.bower + 'angular-socket-io/socket.js/socket.min.js');
 // CSS
 src.css.push(dir.client + 'assets/css/**/*.css');
+src.css.push(dir.bower + 'bootstrap/dist/css/bootstrap.css');
 // Fonts
 src.fonts.push(dir.bower + 'components-font-awesome/fonts/fontawesome-webfont.*')
 // Views

@@ -2,7 +2,8 @@
 var RegistrationModule = angular.module('RegistrationModule',
     [
         'ui.router',
-        'btford.socket-io'
+        'btford.socket-io',
+        'mgcrea.ngStrap'
     ]);
 
 RegistrationModule.factory('mySocket', function (socketFactory) {
