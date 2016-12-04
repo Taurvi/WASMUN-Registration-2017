@@ -36,3 +36,6 @@ Yet another pretty Angular project for the non-profit, Washington State Model Un
 6. Go to your browser and navigate to the public folder.
 7. ???
 8. 💸
+
+## Class Structure
+[UML Diagram]()
