@@ -29,13 +29,25 @@ Yet another pretty Angular project for the non-profit, Washington State Model Un
 1. Clone the repository to your desired folder.
 2. Execute `npm install`.
 3. Execute `npm run bower install`.
-4. If you do not already have Gulp, execute `npm install -g gulp`.
+4. Execute tests.
+    * Karma (Angular): Execute `npm run karma`
+    * Mocha (NodeJS): Execute `npm run mocha`
 5. Decide if you are running development or production.
-    * DEVELOPMENT: Execute `gulp` or `NODE_ENV=development gulp`
-    * PRODUCTION: Execute `NODE_ENV=production gulp`
-6. Go to your browser and navigate to the public folder.
-7. ???
-8. 💸
+    * DEVELOPMENT: Execute `npm run gulp` or `NODE_ENV=development npm run gulp`
+        * Development merely copies over the files. This makes debugging easy.
+    * PRODUCTION: Execute `NODE_ENV=production npm run gulp`
+        * Production minifies all the files and condenses them down as much as possible. Debuggins is very tricky.
+6. Run a server (if you already have one, ignore this step).
+    * Python
+        * Navigate to the `/public` directory
+        * Execute `python -m SimpleHTTPServer`
+9. Open up `/public/index.html`
+    * Python
+        * Navigate to `127.0.0.1:8000` in your browser.
+    * WebStorm
+        * Open the `/public` directory, right click, and open in your desired web browser
+10. ???
+9. 💸
 
-## Class Structure
+## Registration Class Structure
 ![UML Diagram](https://raw.githubusercontent.com/Taurvi/WASMUN-Registration-2017/master/Registration%20UML%20Diagram.png)
