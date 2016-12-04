@@ -1,10 +1,11 @@
 # WASMUN Registration Website (2017)
 ## Contents
 1. [Overview](#overview)
-2. [Technologies Used](#technologies_used)
+2. [Technologies Used](#technologies-used)
 3. [Requirements](#requirements)
 4. [Installation](#installation)
-5. [Registration Class Diagram](#registration_class_diagram)
+5. [Development](#development)
+6. [Registration Class Diagram](#registration-class-diagram)
 
 
 ## Overview
@@ -43,13 +44,16 @@ Yet another pretty Angular project for the non-profit, Washington State Model Un
     * Python
         * Navigate to the `/public` directory
         * Execute `python -m SimpleHTTPServer`
-9. Open up `/public/index.html`
+7. Open up `/public/index.html`
     * Python
         * Navigate to `127.0.0.1:8000` in your browser.
     * WebStorm
         * Open the `/public` directory, right click, and open in your desired web browser
-10. ???
+8. ???
 9. 💸
+
+## Development
+COMING SOON TM
 
 ## Registration Class Diagram
 ![UML Diagram](https://raw.githubusercontent.com/Taurvi/WASMUN-Registration-2017/master/Registration%20UML%20Diagram.png)
