@@ -38,4 +38,4 @@ Yet another pretty Angular project for the non-profit, Washington State Model Un
 8. 💸
 
 ## Class Structure
-[UML Diagram]()
+[UML Diagram](https://raw.githubusercontent.com/Taurvi/WASMUN-Registration-2017/master/Registration%20UML%20Diagram.png)
