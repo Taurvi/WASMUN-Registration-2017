@@ -19,6 +19,7 @@ var dir = {};
 dir.bower = 'bower_components/';
 dir.client = 'client/';
 dir.public = 'public/';
+dir.shared = dir.client + 'shared/';
 // Environment Switch (run as: NODE_ENV=production gulp)
 var env = process.env.NODE_ENV || 'development';
 // Destinations
@@ -53,6 +54,14 @@ src.js.push(dir.client + 'core/RegistrationModule.js');
 src.js.push(dir.client + 'core/Menu/MenuController.js');
 src.js.push(dir.client + 'core/Home/HomeController.js');
 src.js.push(dir.client + 'core/Footer/FooterController.js');
+// JS Shared Classes
+src.js.push(dir.shared + 'classes/ContactInfoClass.js');
+src.js.push(dir.shared + 'classes/CountryClass.js');
+src.js.push(dir.shared + 'classes/CountrySelectionClass.js');
+src.js.push(dir.shared + 'classes/SchoolInfoClass.js');
+src.js.push(dir.shared + 'classes/DelegationInfoClass.js');
+src.js.push(dir.shared + 'classes/DelegationContactsClass.js');
+src.js.push(dir.shared + 'classes/RegistrationClass.js');
 // JS Lib
 src.jsLibs.push(dir.bower + 'angular/angular.js');
 src.jsLibs.push(dir.bower + 'angular-ui-router/release/angular-ui-router.js');
