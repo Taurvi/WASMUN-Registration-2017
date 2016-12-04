@@ -1,7 +1,6 @@
 # WASMUN Registration Website (2017)
 ## Contents
 1. [Overview](#overview)
-    * [Technologies Used](#technoligies-used)
 2. [Requirements](#requirements)
 3. [Installation](#installation)
 4. [Development](#development)
