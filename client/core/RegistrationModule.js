@@ -32,6 +32,10 @@ RegistrationModule.config([
                 'content': {
                     templateUrl: 'views/HomeView.html',
                     controller: 'HomeController'
+                },
+                'footer': {
+                    templateUrl: 'views/FooterView.html',
+                    controller: 'FooterController'
                 }
             }
         })
