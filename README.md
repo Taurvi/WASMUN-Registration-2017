@@ -1,8 +1,10 @@
 # WASMUN Registration Website (2017)
 ## Contents
 1. [Overview](#overview)
-2. [Requirements](#requirements)
-2. [Installation](#installation)
+2. [Technologies Used](#technologies_used)
+3. [Requirements](#requirements)
+4. [Installation](#installation)
+5. [Registration Class Diagram](#registration_class_diagram)
 
 
 ## Overview
@@ -49,5 +51,5 @@ Yet another pretty Angular project for the non-profit, Washington State Model Un
 10. ???
 9. 💸
 
-## Registration Class Structure
+## Registration Class Diagram
 ![UML Diagram](https://raw.githubusercontent.com/Taurvi/WASMUN-Registration-2017/master/Registration%20UML%20Diagram.png)
