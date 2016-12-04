@@ -53,15 +53,19 @@ describe('RegistrationClass Tests', function(){
         it('class should addCountry("foo", "baz"), addCountry("bar", "qux"), removeCountry(0)', function() {
             var countrySelection = RegistrationClass.getCountrySelection();
 
-            countrySelection.addCountry('foo', 'baz');
-            countrySelection.addCountry('bar', 'qux');
+            countrySelection.addCountry('foo', ['baz', 'qux']);
+            countrySelection.addCountry('bar', ['qux']);
 
             expect(countrySelection.getCount()).toBe(2);
+            expect(countrySelection.getCommitteesCount()).toBe(3);
+
             var removed = countrySelection.removeCountry(0);
+            var removedCommittees = removed.getCommittees();
 
             expect(countrySelection.getCount()).toBe(1);
+            expect(countrySelection.getCommitteesCount()).toBe(1);
             expect(removed.getName()).toBe('foo');
-            expect(removed.getCommittee()).toBe('baz');
+            expect(removedCommittees[0]).toBe('baz');
         });
     });
 

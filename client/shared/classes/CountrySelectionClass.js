@@ -25,11 +25,17 @@ RegistrationModule.factory('CountrySelectionClass', ['CountryClass', function (C
     /**
      * Adds a country to the selection.
      * @param country String - the name of the country being added.
-     * @param committee String - the committee of the country being added.
+     * @param committee Array - the committees of the country being added.
      */
-    CountrySelectionClass.prototype.addCountry = function(country, committee) {
-        var tempArray = this.selections;
-        tempArray.push(new CountryClass(country, committee));
+    CountrySelectionClass.prototype.addCountry = function(country, committees) {
+        var tempArray = this.getCountries();
+        var tempCountry = new CountryClass(country);
+
+        committees.map(function(commiteeName) {
+            tempCountry.addCommittee(commiteeName);
+        });
+
+        tempArray.push(tempCountry);
         this.selections = tempArray;
     };
 
@@ -50,12 +56,28 @@ RegistrationModule.factory('CountrySelectionClass', ['CountryClass', function (C
     };
 
     /**
+     * Counts the number of committees selected.
+     * @returns int - the number of committees selected.
+     */
+    CountrySelectionClass.prototype.getCommitteesCount = function() {
+        var committeeCount = 0;
+        var tempCountries = this.getCountries();
+        tempCountries.map(function(country) {
+           var tempCommitees = country.getCommittees();
+           tempCommitees.map(function(committee) {
+               committeeCount++;
+           });
+        });
+        return committeeCount;
+    };
+
+    /**
      * Removes a country from the selection.
      * @param index - the index ID of the country being removed.
      * @returns CountryClass - the country being removed.
      */
     CountrySelectionClass.prototype.removeCountry = function(index) {
-        var tempArray = this.selections;
+        var tempArray = this.getCountries();
         var removed = tempArray.splice(index, 1);
         this.selections = tempArray;
         return removed[0];

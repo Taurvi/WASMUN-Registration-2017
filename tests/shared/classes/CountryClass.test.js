@@ -45,15 +45,6 @@ describe('CountryClass Tests', function(){
            expect(removed).toBe('foo');
            expect(getCommittees[0]).toBe('baz');
         });
-
-        /*it('class should have getCommittee be "baz"', function() {
-            expect(CountryClass.getCommittee()).toBe('baz');
-        });
-
-        it('class should setName to "qux"', function() {
-            CountryClass.setCommittee('qux');
-            expect(CountryClass.getCommittee()).toBe('qux');
-        });*/
     });
 });
 
