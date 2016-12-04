@@ -25,6 +25,8 @@ src.js.push(dir.bower + 'angular-ui-router/release/angular-ui-router.js');
 src.js.push(dir.bower + 'angular-strap/dist/angular-strap.js');
 src.js.push(dir.bower + 'angular-strap/dist/angular-strap.tpl.js');
 src.js.push(dir.bower + 'angular-mocks/angular-mocks.js');
+src.js.push(dir.bower + 'socket.io-client/dist/socket.io.js');
+src.js.push(dir.bower + 'angular-socket-io/socket.js');
 // JS
 src.js.push(dir.client + 'core/RegistrationModule.js');
 src.js.push(dir.client + 'core/Menu/MenuController.js');

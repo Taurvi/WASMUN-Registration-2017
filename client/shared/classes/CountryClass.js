@@ -4,16 +4,15 @@ RegistrationModule.factory('CountryClass', [function () {
     /**
      * Stores all the country information.
      * @param name String - the name of the country.
-     * @param committee String - the committee of the country.
-     * @throws CountryClass requires two parameters - if sufficient parameters are not provided.
+     * @throws CountryClass requires one parameter - if sufficient parameter is not provided.
      * @constructor
      */
-    function CountryClass(name, committee) {
-        if (!name || !committee)
-            throw "CountryClass requires two parameters.";
+    function CountryClass(name) {
+        if (!name)
+            throw "CountryClass requires one parameter.";
         var self = this;
         self._name = name;
-        self._committee = committee;
+        self._committees = [];
     }
 
     // Defines getters and setters for protected variables.
@@ -26,12 +25,12 @@ RegistrationModule.factory('CountryClass', [function () {
                 this._name = name;
             }
         },
-        'committee': {
+        'committees': {
             get: function() {
-                return this._committee;
+                return this._committees;
             },
-            set: function(committee) {
-                this._committee = committee;
+            set: function(committees) {
+                this._committees = committees;
             }
         }
     });
@@ -53,19 +52,34 @@ RegistrationModule.factory('CountryClass', [function () {
     };
 
     /**
-     * Gets the stored committee of the country.
-     * @returns String - the committee of the country.
+     * Gets the stored committees of the country.
+     * @returns Array - the committees of the country.
      */
-    CountryClass.prototype.getCommittee = function() {
-        return this.committee;
+    CountryClass.prototype.getCommittees = function() {
+        return this.committees;
     };
 
     /**
-     * Sets the committee of the country
-     * @param committee - the committee of the country.
+     * Adds a committee.
+     * @param committee String - the committee of the country.
      */
-    CountryClass.prototype.setCommittee = function(committee) {
-        this.committee = committee;
+    CountryClass.prototype.addCommittee = function(committee) {
+        var temp = this.getCommittees();
+        temp.push(committee);
+        this.committees = temp;
+    };
+
+    /**
+     * Removes a committee
+     * @param committee String - the committee to be removed.
+     * @returns String - the removed committee.
+     */
+    CountryClass.prototype.removeCommittee = function(committee) {
+        var temp = this.getCommittees();
+        var index = temp.indexOf(committee);
+        var removed = temp.splice(index, 1);
+        this.committees = temp;
+        return removed[0];
     };
 
     return CountryClass;
