@@ -3,4 +3,6 @@ bower_components/
 node_modules/
 public/
 npm-debug.log
-server/data/client_secret.json
+server/data/
+.DS_Store
+server/.DS_Store
