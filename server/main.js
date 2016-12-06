@@ -5,6 +5,11 @@ var io = require('socket.io')(http);
 var Matrix = require('./matrix/matrix').Matrix;
 var matrix = new Matrix();
 
+var Firebase = require('./firebase/firebase').Firebase;
+var firebase = new Firebase();
+
+
+
 io.on('connection', function(socket){
     console.log('[Main] User ' + socket.id + ' has connected.');
     socket.on('disconnect', function(){
@@ -13,6 +18,7 @@ io.on('connection', function(socket){
 
     socket.on('getMatrix', function() {
         console.log('[Main] User ' + socket.id + ' has requested the matrix.');
+        firebase.postRegistration();
         matrix.getParsedMatrix()
             .then(function success(parsedMatrix) {
                 console.log('[Main] Matrix successfully retrieved and parsed.');
