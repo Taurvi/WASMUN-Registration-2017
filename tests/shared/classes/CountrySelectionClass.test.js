@@ -67,5 +67,22 @@ describe('CountrySelectionClass Tests', function(){
             expect(removedCommittees[0]).toBe('bar');
         });
     });
+
+    describe('+ string tests:', function() {
+        it('class should have stringify defined', function() {
+           expect(CountrySelectionClass.stringify()).toBeDefined();
+        });
+
+        it('class should addCountry("foo", ["baz","bar"]) and stringify should be {"selections":[{"name":"foo","committees":["baz","bar"]}]}', function() {
+            CountrySelectionClass.addCountry('foo', ['baz', 'bar']);
+            var countries = CountrySelectionClass.getCountries();
+            expect(countries[0].getName()).toBe('foo');
+            var committees = countries[0].getCommittees();
+            expect(committees[0]).toBe('baz');
+            expect(committees[1]).toBe('bar');
+            var compare = '{"selections":[{"name":"foo","committees":["baz","bar"]}]}';
+            expect(CountrySelectionClass.stringify()).toBe(compare);
+        });
+    });
 });
 

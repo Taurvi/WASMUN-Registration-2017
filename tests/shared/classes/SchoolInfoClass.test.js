@@ -32,5 +32,20 @@ describe('SchoolInfoClass Tests', function(){
             expect(SchoolInfoClass.getAddress()).toBe('qux');
         });
     });
+
+    describe('+ string tests:', function() {
+        it('class should have stringify defined', function() {
+            expect(SchoolInfoClass.stringify()).toBeDefined();
+        });
+
+        it('class should setName("foo"), setAddress("bar"), and stringify should be {"name":"foo","address":"bar"}', function() {
+            SchoolInfoClass.setName('foo');
+            SchoolInfoClass.setAddress('bar');
+            expect(SchoolInfoClass.getName()).toBe('foo');
+            expect(SchoolInfoClass.getAddress()).toBe('bar');
+            var compare = '{"name":"foo","address":"bar"}';
+            expect(SchoolInfoClass.stringify()).toBe(compare);
+        })
+    })
 });
 

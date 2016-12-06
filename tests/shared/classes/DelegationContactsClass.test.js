@@ -77,5 +77,18 @@ describe('DelegationContactsClass Tests', function(){
             expect(headDelegates[1].getPhone()).toBe(sample[1].getPhone());
         }));
     });
+
+    describe('+ string tests:', function() {
+        it('class should have stringify defined', function() {
+            expect(DelegationContactsClass.stringify()).toBeDefined();
+        });
+
+        it('class should setAdvisor("foo", "bar@baz", "1234567890"), addHeadDelegate("qux", "qux@baz", "0987654321", and stringify should be {"advisor":{"name":"foo","email":"bar@baz","phone":"1234567890"},"headDelegates":[{"name":"qux","email":"qux@baz","phone":"0987654321"}]})', function() {
+            DelegationContactsClass.setAdvisor('foo', 'bar@baz', '1234567890');
+            DelegationContactsClass.addHeadDelegate('qux', 'qux@baz', '0987654321');
+            var compare = '{"advisor":{"name":"foo","email":"bar@baz","phone":"1234567890"},"headDelegates":[{"name":"qux","email":"qux@baz","phone":"0987654321"}]}';
+            expect(DelegationContactsClass.stringify()).toBe(compare);
+        })
+    });
 });
 

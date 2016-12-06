@@ -88,5 +88,18 @@ RegistrationModule.factory('DelegationInfoClass', [function() {
         this.discount = discount;
     };
 
+    /**
+     * Converts the data in this to a JSON string.
+     * @returns String - the data converted to JSON string.
+     * TODO: Update UML diagram
+     */
+    DelegationInfoClass.prototype.stringify = function() {
+        var object = {};
+        object.size = this.getSize();
+        object.cost = this.getCost();
+        object.discount = this.getDiscount();
+        return JSON.stringify(object);
+    };
+
     return DelegationInfoClass;
 }]);

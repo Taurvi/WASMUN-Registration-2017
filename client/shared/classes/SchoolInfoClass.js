@@ -63,5 +63,17 @@ RegistrationModule.factory('SchoolInfoClass', [function () {
         this.address = address;
     };
 
+    /**
+     * Converts the data in this to a JSON string.
+     * @returns String - the data converted to JSON string.
+     * TODO: Update UML diagram
+     */
+    SchoolInfoClass.prototype.stringify = function() {
+        var object = {};
+        object.name = this.getName();
+        object.address = this.getAddress();
+        return JSON.stringify(object);
+    };
+
     return SchoolInfoClass;
 }]);

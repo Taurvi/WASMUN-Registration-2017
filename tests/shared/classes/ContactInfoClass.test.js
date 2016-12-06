@@ -55,5 +55,22 @@ describe('ContactInfoClass Tests', function(){
             expect(ContactInfoClass.getPhone()).toBe('0987654321')
         })
     });
+
+    describe('+ string tests', function() {
+        it('class should have stringify defined', function() {
+            expect(ContactInfoClass.stringify()).toBeDefined();
+        });
+
+        it('class should setName("foo"), setEmail("baz@bar.qux"), setPhone("1234567890"), and stringify should be {"name": "foo", "email": "baz@bar.qux", "phone": "1234567890"}', function() {
+            ContactInfoClass.setName('foo');
+            ContactInfoClass.setEmail('baz@bar.qux');
+            ContactInfoClass.setPhone('1234567890');
+            expect(ContactInfoClass.getName()).toBe('foo');
+            expect(ContactInfoClass.getEmail()).toBe('baz@bar.qux');
+            expect(ContactInfoClass.getPhone()).toBe('1234567890');
+            var compare = '{"name":"foo","email":"baz@bar.qux","phone":"1234567890"}';
+            expect(ContactInfoClass.stringify()).toBe(compare);
+        });
+    });
 });
 

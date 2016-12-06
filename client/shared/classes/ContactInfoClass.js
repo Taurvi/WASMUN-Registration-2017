@@ -91,5 +91,19 @@ RegistrationModule.factory('ContactInfoClass', [function () {
         this.phone = phone;
     };
 
+    /**
+     * Converts the data in this to a JSON string.
+     * @returns String - the data converted to JSON string.
+     * TODO: Update UML diagram
+     */
+    ContactInfoClass.prototype.stringify = function() {
+        var object = {};
+        object.name = this.getName();
+        object.email = this.getEmail();
+        object.phone = this.getPhone();
+
+        return JSON.stringify(object);
+    };
+
     return ContactInfoClass;
 }]);

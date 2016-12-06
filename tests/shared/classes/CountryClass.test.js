@@ -46,5 +46,23 @@ describe('CountryClass Tests', function(){
            expect(getCommittees[0]).toBe('baz');
         });
     });
+
+    describe('+ string tests', function() {
+        it('class should have stringify defined', function() {
+            expect(CountryClass.stringify()).toBeDefined();
+        });
+
+        it('class should setName("foo"), addCommittee("baz"), addCommittee("bar"), and stringify should be {"name":"foo","committees":["baz","bar"]}', function() {
+            CountryClass.setName('foo');
+            CountryClass.addCommittee('baz');
+            CountryClass.addCommittee('bar');
+            expect(CountryClass.getName()).toBe('foo');
+            var committees = CountryClass.getCommittees();
+            expect(committees[0]).toEqual('baz');
+            expect(committees[1]).toEqual('bar');
+            var compare = '{"name":"foo","committees":["baz","bar"]}';
+            expect(CountryClass.stringify()).toBe(compare);
+        })
+    })
 });
 

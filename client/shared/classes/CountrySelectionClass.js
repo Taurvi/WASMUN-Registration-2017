@@ -83,5 +83,22 @@ RegistrationModule.factory('CountrySelectionClass', ['CountryClass', function (C
         return removed[0];
     };
 
+    /**
+     * Converts the data in this to a JSON string.
+     * @returns String - the data converted to JSON string.
+     * TODO: Update UML diagram
+     */
+    CountrySelectionClass.prototype.stringify = function() {
+        var object = {};
+        object.selections = [];
+
+        var tempCountries = this.getCountries();
+        tempCountries.map(function(country) {
+            object.selections.push(JSON.parse(country.stringify()));
+        });
+
+        return JSON.stringify(object);
+    };
+
     return CountrySelectionClass;
 }]);

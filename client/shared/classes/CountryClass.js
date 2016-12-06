@@ -82,5 +82,17 @@ RegistrationModule.factory('CountryClass', [function () {
         return removed[0];
     };
 
+    /**
+     * Converts the data in this to a JSON string.
+     * @returns String - the data converted to JSON string.
+     * TODO: Update UML diagram
+     */
+    CountryClass.prototype.stringify = function() {
+        var object = {};
+        object.name = this.getName();
+        object.committees = this.getCommittees();
+        return JSON.stringify(object);
+    };
+
     return CountryClass;
 }]);

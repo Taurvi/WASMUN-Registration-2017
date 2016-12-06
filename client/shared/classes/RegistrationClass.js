@@ -74,5 +74,6 @@ RegistrationModule.factory('RegistrationClass', [
             return this.delegationContacts;
         };
 
+        // TODO: Do I really need a stringify class here...
         return RegistrationClass;
     }]);

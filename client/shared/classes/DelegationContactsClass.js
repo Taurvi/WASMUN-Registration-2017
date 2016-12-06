@@ -96,5 +96,23 @@ RegistrationModule.factory('DelegationContactsClass', ['ContactInfoClass', funct
         this.headDelegates = tempHeadDelegates;
     };
 
+    /**
+     * Converts the data in this to a JSON string.
+     * @returns String - the data converted to JSON string.
+     * TODO: Update UML diagram
+     */
+    DelegationContactsClass.prototype.stringify = function() {
+        var object = {};
+        object.advisor = JSON.parse(this.advisor.stringify());
+        object.headDelegates = [];
+
+        var headDelegates = this.headDelegates;
+        headDelegates.map(function(headDelegate) {
+            object.headDelegates.push(JSON.parse(headDelegate.stringify()));
+        });
+
+        return JSON.stringify(object);
+    };
+
     return DelegationContactsClass;
 }]);

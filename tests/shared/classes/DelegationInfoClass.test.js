@@ -43,5 +43,22 @@ describe('DelegateInformationClass Tests', function(){
             expect(DelegationInfoClass.getDiscount()).toBeTruthy();
         });
     });
+
+    describe('+ string tests', function() {
+        it('class should have stringify defined', function() {
+            expect(DelegationInfoClass.stringify()).toBeDefined();
+        });
+
+        it('class should setSize(1), setCost(2), setDiscount(true), and stringify should be {"size":1,"cost":2,"discount":true}', function() {
+            DelegationInfoClass.setSize(1);
+            DelegationInfoClass.setCost(2);
+            DelegationInfoClass.setDiscount(true);
+            expect(DelegationInfoClass.getSize()).toBe(1);
+            expect(DelegationInfoClass.getCost()).toBe(2);
+            expect(DelegationInfoClass.getDiscount()).toBeTruthy();
+            var compare = '{"size":1,"cost":2,"discount":true}';
+            expect(DelegationInfoClass.stringify()).toBe(compare);
+        });
+    });
 });
 
