@@ -1,0 +1,29 @@
+Registration Requirements:
+
+Section I: School Information
+    School Name
+    School Address (this can be multiple fields but it'll be condensed down into a single string)
+Section II: Delegation Contact Information
+    Advisor
+        Name
+        Email
+        Phone (doesn't need to validate anything too special or fancy unless you want to/have time for it - should be string)
+    Head Delegate (should be able to add multiple up to 2)
+        Name
+        Email
+        Phone (same as above requirement)
+Section III: Country Selection
+    Should be a giant table of all the countries and all their respective committees
+    Upon adding a country, it'll take the number of committee slots per country and store that for later
+    Should be able to remove a country (doesn't need to be able to edit)
+Section IV: Delegation Information
+    Intended Delegation Size (int):
+    Should show the number of committee slots requested (from Section III)
+    Should also have a cost estimator (delegation fee and delegate fee - need to verify with Krishna)
+
+Submit Form
+    Should call function Submit Function (after .stringify all object fields)
+
+General Comments
+    Import ['RegistrationClass', function(RegistrationClass)] etc.
+        This should have all the functionality (see the diagram provided on readme.md)
