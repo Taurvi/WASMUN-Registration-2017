@@ -1,20 +1,20 @@
 <form novalidate class="css-form">
     <div class="form-group">
         <h4>Section I: School Information</h4>
-        <label>School Name: <input type="text" ng-model="data.school.name" required /></label><br />
-        <label>School Address <input type="text" ng-model="data.school.address" required /></label><br />
+        <label>School Name: <input type="text" ng-model="data.schoolInfo.name" required /></label><br />
+        <label>School Address <input type="text" ng-model="data.schoolInfo.address" required /></label><br />
     </div>
     <hr>
 
     <div class="form-group">
-        <label>E-mail: <input type="email" ng-model="data.delegation.advisor.email" required /></label><br />
+        <label>E-mail: <input type="email" ng-model="data.delegationContacts.advisor.email" required /></label><br />
 
     </div>
 
     <input type="button" ng-click="clear()" value="Clear" />
     <input type="submit" ng-click="submit(data)" value="Submit" />
 </form>
-<pre>data = {{application | json}}</pre>
+<pre>data = {{registration | json}}</pre>
 
 
 <button ng-click="testEmit()"> </button>

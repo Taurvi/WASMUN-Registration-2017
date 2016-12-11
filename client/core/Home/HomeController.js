@@ -32,10 +32,10 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
     });
 
     // Form
-    $scope.application = {};
+    $scope.registration = {};
 
     $scope.submit = function(data) {
-        $scope.application = angular.copy(data);
+        $scope.registration = angular.copy(data);
     };
 
     $scope.clear = function() {
@@ -43,6 +43,6 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
             form.$setPristine();
             form.$setUntouched();
         }
-        $scope.application = angular.copy($scope.application);
+        $scope.registration = angular.copy($scope.registration);
     };
 }]);
