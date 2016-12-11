@@ -30,4 +30,19 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
     mySocket.on('sendMatrix', function(data) {
         console.log(data);
     });
+
+    // Form
+    $scope.application = {};
+
+    $scope.submit = function(data) {
+        $scope.application = angular.copy(data);
+    };
+
+    $scope.clear = function() {
+        if (form) {
+            form.$setPristine();
+            form.$setUntouched();
+        }
+        $scope.application = angular.copy($scope.application);
+    };
 }]);
