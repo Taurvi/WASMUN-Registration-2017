@@ -21,6 +21,7 @@ src.js = [];
  ************************/
 // JS Lib
 src.js.push(dir.bower + 'angular/angular.js');
+src.js.push(dir.bower + 'angular-animate/angular-animate.js');
 src.js.push(dir.bower + 'angular-ui-router/release/angular-ui-router.js');
 src.js.push(dir.bower + 'angular-strap/dist/angular-strap.js');
 src.js.push(dir.bower + 'angular-strap/dist/angular-strap.tpl.js');

@@ -2,6 +2,7 @@
 var RegistrationModule = angular.module('RegistrationModule',
     [
         'ui.router',
+        'ngAnimate',
         'btford.socket-io',
         'mgcrea.ngStrap'
     ]);

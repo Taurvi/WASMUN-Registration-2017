@@ -64,6 +64,7 @@ src.js.push(dir.shared + 'classes/DelegationContactsClass.js');
 src.js.push(dir.shared + 'classes/RegistrationClass.js');
 // JS Lib
 src.jsLibs.push(dir.bower + 'angular/angular.js');
+src.jsLibs.push(dir.bower + 'angular-animate/angular-animate.js');
 src.jsLibs.push(dir.bower + 'angular-ui-router/release/angular-ui-router.js');
 src.jsLibs.push(dir.bower + 'angular-strap/dist/angular-strap.js');
 src.jsLibs.push(dir.bower + 'angular-strap/dist/angular-strap.tpl.js');
@@ -72,6 +73,7 @@ src.jsLibs.push(dir.bower + 'angular-socket-io/socket.js');
 
 // JS Lib (Minified)
 src.jsLibsMin.push(dir.bower + 'angular/angular.min.js');
+src.jsLibsMin.push(dir.bower + 'angular-animate/angular-animate.min.js');
 src.jsLibsMin.push(dir.bower + 'angular-ui-router/release/angular-ui-router.min.js');
 src.jsLibsMin.push(dir.bower + 'angular-strap/dist/angular-strap.min.js');
 src.jsLibsMin.push(dir.bower + 'angular-strap/dist/angular-strap.tpl.min.js');
@@ -80,6 +82,7 @@ src.jsLibsMin.push(dir.bower + 'angular-socket-io/socket.js/socket.min.js');
 // CSS
 src.css.push(dir.client + 'assets/css/**/*.css');
 src.css.push(dir.bower + 'bootstrap/dist/css/bootstrap.css');
+src.css.push(dir.bower + 'angular-motion/dist/angular-motion.css');
 // Fonts
 src.fonts.push(dir.bower + 'components-font-awesome/fonts/fontawesome-webfont.*')
 // Views
