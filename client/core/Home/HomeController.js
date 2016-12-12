@@ -38,11 +38,11 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
         $scope.registration = angular.copy(data);
     };
 
-    $scope.clear = function() {
+    $scope.clear = function(form) {
         if (form) {
             form.$setPristine();
             form.$setUntouched();
         }
-        $scope.registration = angular.copy($scope.registration);
+        $scope.data = angular.copy($scope.registration);
     };
 }]);

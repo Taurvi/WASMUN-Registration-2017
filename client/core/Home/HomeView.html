@@ -7,9 +7,35 @@
     <hr>
 
     <div class="form-group">
+        <h4>Section II: Delegation Contact Information</h4>
+        <h5>Advisor:</h5>
+        <label>Name: <input type="name" ng-model="data.delegationContacts.advisor.name" required/></label>
         <label>E-mail: <input type="email" ng-model="data.delegationContacts.advisor.email" required /></label><br />
+        <!-- need to validate -->
+        <label>Phone: <input type="text" ng-model="data.delagationContacts.advisor.phone" required /></label><br/>
+        <h5>Head Delegate</h5>
+        <label>Name: <input type="text" ng-model="data.delegationContacts.headDelegateOne.name"/></label>
+        <label>E-mail: <input type="email" ng-model="data.delegationContacts.headDelegateOne.email" required /></label><br />
+        <!-- need to validate -->
+        <label>Phone: <input type="text" ng-model="data.delagationContacts.headDelegateOne.phone" required /></label><br/><br>
+
+        <button ng-click="">Add another head delegate</button>
 
     </div>
+    <hr>
+
+    <div class="form-group">
+        <h4>Section III: Country Selection</h4>
+    </div>
+
+    <div class="form-group">
+        <h4>Section IV: Delegation Information</h4>
+        <label>Intended Delegation Size: <input type="number" ng-model="data.delegationInfo.size" required></label><br>
+    </div>
+    <hr>
+
+    <label>Requested Slots: </label>{{}}<br>
+    <label>Estimated Cost: </label>{{}}<br><br>
 
     <input type="button" ng-click="clear()" value="Clear" />
     <input type="submit" ng-click="submit(data)" value="Submit" />
