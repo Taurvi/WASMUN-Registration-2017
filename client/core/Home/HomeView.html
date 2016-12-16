@@ -1,4 +1,4 @@
-<input novalidate class="css-form">
+<form novalidate>
     <div class="form-group">
         <div class="input-group">
             <h4>Section I: School Information</h4>
@@ -16,17 +16,43 @@
 
     <div class="form-group">
         <h4>Section II: Delegation Contact Information</h4>
-        <h5>Advisor:</h5>
-        <label>Name: <input type="text" class="form-control" ng-model="data.delegationContacts.advisor.name" required/></label>
-        <label>E-mail: <input type="email" class="form-control" ng-model="data.delegationContacts.advisor.email" required /></label>
-        <!-- need to validate -->
-        <label>Phone: <input type="text" class="form-control" ng-model="data.delagationContacts.advisor.phone" required /></label>
-        <h5>Head Delegate</h5>
-        <label>Name: <input type="text" class="form-control" ng-model="data.delegationContacts.headDelegateOne.name"/></label>
-        <label>E-mail: <input type="email" class="form-control" ng-model="data.delegationContacts.headDelegateOne.email" required /></label>
+        <h5>Adviser:</h5>
+        <div class="input-group">
+            <label>
+                Name: <input type="text" class="form-control" ng-model="data.delegationContacts.adviser.name" required/>
+            </label>
+        </div>
+
+        <div class="input-group">
+            <label>
+                E-mail: <input type="email" class="form-control" ng-model="data.delegationContacts.adviser.email" required />
+            </label>
+        </div>
+
         <!-- need to validate -->
         <div class="input-group">
-            <label>Phone: <input type="text" class="form-control" ng-model="data.delagationContacts.headDelegateOne.phone" required /></label>
+            <label>
+                Phone: <input type="text" class="form-control" ng-model="data.delegationContacts.adviser.phone" required />
+            </label>
+        </div>
+
+        <h5>Head Delegate</h5>
+        <div class="input-group">
+            <label>
+                Name: <input type="text" class="form-control" ng-model="data.delegationContacts.headDelegateOne.name"/>
+            </label>
+        </div>
+
+        <div class="input-group">
+            <label>
+                E-mail: <input type="email" class="form-control" ng-model="data.delegationContacts.headDelegateOne.email" required />
+            </label>
+        </div>
+            <!-- need to validate -->
+        <div class="input-group">
+            <label>
+                Phone: <input type="text" class="form-control" ng-model="data.delagationContacts.headDelegateOne.phone" required />
+            </label>
         </div>
         <input type="button" class="btn btn-default" ng-click="" value="Add another head delegate"/>
 
@@ -46,13 +72,17 @@
     <div class="form-group">
         <h4>Section IV: Delegation Information</h4>
        <div class="input-group">
-           <label>Intended Delegation Size: <input type="number" class="form-control" ng-model="data.delegationInfo.size" required/></label>
+           <label>
+               Intended Delegation Size: <input type="number" class="form-control" ng-model="data.delegationInfo.size" required/>
+           </label>
        </div>
     </div>
     <hr>
 
     <label>Requested Slots: <input type="number" class="form-control" ng-model="data.delegationInfo.slots"></label>{{}}<br>
-    <label>Estimated Cost: </label><input type="text" class="form-control" ng-readonly="true" ng-value="(50 + (30) * data.delegationInfo.slots) || 50" ng-model="data.delegationInfo.cost"><br>
+    <label>
+        Estimated Cost: <input type="text" class="form-control" ng-readonly="true" ng-value="(50 + (30) * data.delegationInfo.slots) || 50" ng-model="data.delegationInfo.cost">
+    </label>
 
     <input type="button" class="btn btn-default" ng-click="clear()" value="Clear" />
     <input type="button" class="btn btn-default" ng-click="submit(data)" value="Submit" />
