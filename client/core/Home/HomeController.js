@@ -5,10 +5,6 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
         console.log('test');
     });
 
-    $scope.testEmit = function() {
-        mySocket.emit('getMatrix');
-    };
-
     var showError = false;
 
     var alerts = {};
@@ -25,10 +21,13 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
         console.log('socket connected');
         alerts.errorConnect.hide();
         alerts.successConnect.show();
+        mySocket.emit('getMatrix');
     });
 
+    $scope.matrix = {};
     mySocket.on('sendMatrix', function(data) {
-        console.log(data);
+        $scope.matrix = JSON.parse(data);
+        console.log($scope.matrix);
     });
 
     // Form

@@ -1,46 +1,60 @@
-<form novalidate class="css-form">
+<input novalidate class="css-form">
     <div class="form-group">
-        <h4>Section I: School Information</h4>
-        <label>School Name: <input type="text" ng-model="data.schoolInfo.name" required /></label><br />
-        <label>School Address <input type="text" ng-model="data.schoolInfo.address" required /></label><br />
+        <div class="input-group">
+            <h4>Section I: School Information</h4>
+        </div>
+
+        <div class="input-group">
+            <label>School Name: <input type="text" class="form-control" ng-model="data.schoolInfo.name" required /></label>
+        </div>
+
+        <div class="input-group">
+            <label>School Address <input type="text" class="form-control" ng-model="data.schoolInfo.address" required /></label>
+        </div>
     </div>
-    <hr>
+
 
     <div class="form-group">
         <h4>Section II: Delegation Contact Information</h4>
         <h5>Advisor:</h5>
-        <label>Name: <input type="name" ng-model="data.delegationContacts.advisor.name" required/></label>
-        <label>E-mail: <input type="email" ng-model="data.delegationContacts.advisor.email" required /></label><br />
+        <label>Name: <input type="text" class="form-control" ng-model="data.delegationContacts.advisor.name" required/></label>
+        <label>E-mail: <input type="email" class="form-control" ng-model="data.delegationContacts.advisor.email" required /></label>
         <!-- need to validate -->
-        <label>Phone: <input type="text" ng-model="data.delagationContacts.advisor.phone" required /></label><br/>
+        <label>Phone: <input type="text" class="form-control" ng-model="data.delagationContacts.advisor.phone" required /></label>
         <h5>Head Delegate</h5>
-        <label>Name: <input type="text" ng-model="data.delegationContacts.headDelegateOne.name"/></label>
-        <label>E-mail: <input type="email" ng-model="data.delegationContacts.headDelegateOne.email" required /></label><br />
+        <label>Name: <input type="text" class="form-control" ng-model="data.delegationContacts.headDelegateOne.name"/></label>
+        <label>E-mail: <input type="email" class="form-control" ng-model="data.delegationContacts.headDelegateOne.email" required /></label>
         <!-- need to validate -->
-        <label>Phone: <input type="text" ng-model="data.delagationContacts.headDelegateOne.phone" required /></label><br/><br>
-
-        <button ng-click="">Add another head delegate</button>
+        <div class="input-group">
+            <label>Phone: <input type="text" class="form-control" ng-model="data.delagationContacts.headDelegateOne.phone" required /></label>
+        </div>
+        <input type="button" class="btn btn-default" ng-click="" value="Add another head delegate"/>
 
     </div>
     <hr>
 
     <div class="form-group">
         <h4>Section III: Country Selection</h4>
+        <table class="table table-striped">
+            <tr ng-repeat="(county, committees) in matrix">
+                <td>{{country}}</td>
+                <td>{{committees}}</td>
+            </tr>
+        </table>
     </div>
 
     <div class="form-group">
         <h4>Section IV: Delegation Information</h4>
-        <label>Intended Delegation Size: <input type="number" ng-model="data.delegationInfo.size" required></label><br>
+       <div class="input-group">
+           <label>Intended Delegation Size: <input type="number" class="form-control" ng-model="data.delegationInfo.size" required/></label>
+       </div>
     </div>
     <hr>
 
-    <label>Requested Slots: </label>{{}}<br>
-    <label>Estimated Cost: </label>{{}}<br><br>
+    <label>Requested Slots: <input type="number" class="form-control" ng-model="data.delegationInfo.slots"></label>{{}}<br>
+    <label>Estimated Cost: </label><input type="text" class="form-control" ng-readonly="true" ng-value="(50 + (30) * data.delegationInfo.slots) || 50" ng-model="data.delegationInfo.cost"><br>
 
-    <input type="button" ng-click="clear()" value="Clear" />
-    <input type="submit" ng-click="submit(data)" value="Submit" />
+    <input type="button" class="btn btn-default" ng-click="clear()" value="Clear" />
+    <input type="button" class="btn btn-default" ng-click="submit(data)" value="Submit" />
 </form>
 <pre>data = {{registration | json}}</pre>
-
-
-<button ng-click="testEmit()"> </button>
