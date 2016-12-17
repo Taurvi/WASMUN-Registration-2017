@@ -63,7 +63,7 @@ RegistrationModule.factory('RegistrationClass', [
          * @returns CountrySelectionClass - information on the delegation's country seletion.
          */
         RegistrationClass.prototype.getCountrySelection = function() {
-            return this._countrySelection;
+            return this.countrySelection;
         };
 
         /**
@@ -72,6 +72,15 @@ RegistrationModule.factory('RegistrationClass', [
          */
         RegistrationClass.prototype.getDelegationContacts = function() {
             return this.delegationContacts;
+        };
+
+        RegistrationClass.prototype.stringify = function() {
+            var object = {};
+            object.delegationInfo = this.getDelegationInfo().stringify();
+            object.schoolInfo = this.getSchoolInfo().stringify();
+            object.countrySelection = this.getCountrySelection().stringify();
+            object.delegationContacts = this.getDelegationContacts().stringify();
+            return JSON.stringify(object);
         };
 
         // TODO: Do I really need a stringify class here...
