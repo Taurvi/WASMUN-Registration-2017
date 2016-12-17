@@ -18,7 +18,6 @@ io.on('connection', function(socket){
 
     socket.on('getMatrix', function() {
         console.log('[Main] User ' + socket.id + ' has requested the matrix.');
-        firebase.postRegistration();
         matrix.getParsedMatrix()
             .then(function success(parsedMatrix) {
                 console.log('[Main] Matrix successfully retrieved and parsed.');
@@ -27,7 +26,12 @@ io.on('connection', function(socket){
             }, function error(err) {
                 console.log('[Main] Matrix retrieval failed: ' + err);
             });
-    })
+    });
+
+    socket.on('sendRegistration', function(data) {
+        console.log('[Main] Registration data received from client.')
+        firebase.postRegistration(data);
+    });
 });
 
 http.listen(3000, function() {

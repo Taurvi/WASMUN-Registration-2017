@@ -113,5 +113,11 @@ describe('RegistrationClass Tests', function(){
             expect(headDelegates[0].getPhone()).toBe('0000000000');
         });
     });
+
+    describe('+ stringify tests', function() {
+        it('class sshould have stringify defined', function() {
+            expect(RegistrationClass.stringify).toBeDefined();
+        });
+    });
 });
 

@@ -51,8 +51,8 @@ finalized.css = '';
  ************************/
 // JS
 src.js.push(dir.client + 'core/RegistrationModule.js');
-src.js.push(dir.client + 'core/Menu/MenuController.js');
 src.js.push(dir.client + 'core/Home/HomeController.js');
+src.js.push(dir.client + 'core/Admin/AdminController.js');
 src.js.push(dir.client + 'core/Footer/FooterController.js');
 // JS Shared Classes
 src.js.push(dir.shared + 'classes/ContactInfoClass.js');
@@ -63,6 +63,9 @@ src.js.push(dir.shared + 'classes/DelegationInfoClass.js');
 src.js.push(dir.shared + 'classes/DelegationContactsClass.js');
 src.js.push(dir.shared + 'classes/RegistrationClass.js');
 // JS Lib
+src.jsLibs.push(dir.bower + 'jquery/dist/jquery.js');
+src.jsLibs.push(dir.bower + 'jquery-validation/dist/jquery.validate.js');
+src.jsLibs.push(dir.bower + 'jquery-validation/dist/additional-methods.js');
 src.jsLibs.push(dir.bower + 'angular/angular.js');
 src.jsLibs.push(dir.bower + 'angular-animate/angular-animate.js');
 src.jsLibs.push(dir.bower + 'angular-ui-router/release/angular-ui-router.js');
@@ -72,6 +75,9 @@ src.jsLibs.push(dir.bower + 'socket.io-client/dist/socket.io.js');
 src.jsLibs.push(dir.bower + 'angular-socket-io/socket.js');
 
 // JS Lib (Minified)
+src.jsLibsMin.push(dir.bower + 'jquery/dist/jquery.min.js');
+src.jsLibsMin.push(dir.bower + 'jquery-validation/dist/jquery.validate.min.js');
+src.jsLibsMin.push(dir.bower + 'jquery-validation/dist/additional-methods.min.js');
 src.jsLibsMin.push(dir.bower + 'angular/angular.min.js');
 src.jsLibsMin.push(dir.bower + 'angular-animate/angular-animate.min.js');
 src.jsLibsMin.push(dir.bower + 'angular-ui-router/release/angular-ui-router.min.js');
@@ -86,8 +92,8 @@ src.css.push(dir.bower + 'angular-motion/dist/angular-motion.css');
 // Fonts
 src.fonts.push(dir.bower + 'components-font-awesome/fonts/fontawesome-webfont.*')
 // Views
-src.views.push(dir.client + 'core/Menu/MenuView.html');
 src.views.push(dir.client + 'core/Home/HomeView.html');
+src.views.push(dir.client + 'core/Admin/AdminView.html');
 src.views.push(dir.client + 'core/Footer/FooterView.html');
 // Images
 src.imgs.push(dir.client + 'assets/imgs/**/*');
