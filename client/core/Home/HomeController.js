@@ -31,10 +31,36 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
     });
 
     // Form
+    $('#form').validate(
+        {
+            rules: {
+                schoolName: {
+                    minlength: 2,
+                    required: true
+                },
+                adviserEmail: {
+                    required: true,
+                    email: true
+                }
+            },
+            highlight: function(element) {
+                $(element).closest('.control-group').removeClass('success').addClass('has-error');
+            },
+            success: function(element) {
+                element = element.closest('.control-group');
+                console.log(element);
+                if (element.hasClass('has-error')) {
+                    element.addClass('valid').removeClass('has-error').addClass('has-success');
+                }
+            }
+        });
+
     $scope.registration = {};
 
     $scope.submit = function(data) {
         $scope.registration = angular.copy(data);
+
+        mySocket.emit('sendRegistration', $scope.registration);
     };
 
     $scope.clear = function(form) {
