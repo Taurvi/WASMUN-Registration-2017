@@ -11,13 +11,45 @@ var _readFirebaseConfig = function() {
     fs_readFile('./data/firebase-config.json')
         .then(function success(rawConfig) {
             deferred.resolve(JSON.parse(rawConfig));
-            console.log('[FirebaseConfig] Firebase Config successfully read.');
+            console.log('[FirebaseReadConfig] Firebase Config successfully read.');
         }, function error(err) {
-            console.log('[FirebaseConfig] There was an error reading the file.');
+            console.log('[FirebaseReadConfig] There was an error reading the file.');
             deferred.reject(err);
         });
     return deferred.promise;
 };
+
+var _readFirebaseAuth = function() {
+    var deferred = Q.defer();
+    console.log('[FirebaseReadAuth] Reading Firebase Auth.');
+    fs_readFile('./data/firebase-auth.json')
+        .then(function success(rawAuth) {
+            deferred.resolve(JSON.parse(rawAuth));
+            console.log('[FirebaseReadAuth] Firebase Config successfully read.');
+        }, function error(err) {
+            console.log('[FirebaseReadAuth] There was an error reading the file.');
+            deferred.reject(err);
+        });
+    return deferred.promise;
+}
+
+var _authFirebase = function() {
+    var deferred = Q.defer();
+    _readFirebaseAuth().then(function success(rawAuth) {
+        firebase.auth().signInWithEmailAndPassword(rawAuth.username, rawAuth.password).then(function success() {
+            console.log('[FirebaseAuth] Firebase Auth success.');
+            deferred.resolve();
+        }, function error(error) {
+            console.log('[FirebaseAuth] Firebase Auth failed: ' + error.code + error.message);
+            deferred.reject();
+        });
+        console.log('[FirebaseAuth] Firebase Auth successfully.');
+    }, function error() {
+        deferred.reject();
+        console.log('[FirebaseAuth] There was an error reading the file.');
+    });
+    return deferred.promise;
+}
 
 var _readClientDataMock = function() {
     var deferred = Q.defer();
@@ -49,9 +81,14 @@ var Firebase = function () {
 };
 
 Firebase.prototype.postRegistration = function(data) {
-    console.log('[FirebasePostRegistration] Raw data received from client.');
-    database.ref('/2017/').push(data);
-    console.log('[FirebasePostRegistration] Submitted data to server.');
+    _authFirebase().then(function success() {
+        console.log('[FirebasePostRegistration] Raw data received from client.');
+        database.ref('/2017/').push(data);
+        console.log('[FirebasePostRegistration] Submitted data to server.');
+    }, function error() {
+        console.log('[FirebasePostRegistration] Failed to auth.');
+    });
+
     // Read temp JSON file
     /*_readClientDataMock().then(function success(data) {
         database.ref('/2017/').push(data);
