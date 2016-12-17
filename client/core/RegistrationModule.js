@@ -22,14 +22,10 @@ RegistrationModule.config([
     '$httpProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
-    $urlRouterProvider.otherwise('/');
     $stateProvider
         .state('home', {
             url: '/',
             views: {
-                'menu': {
-                    templateUrl: 'views/MenuView.html'
-                },
                 'content': {
                     templateUrl: 'views/HomeView.html',
                     controller: 'HomeController'
@@ -40,4 +36,14 @@ RegistrationModule.config([
                 }
             }
         })
+        .state('admin', {
+            url: '/admin/',
+            views: {
+                'content': {
+                    templateUrl: 'views/AdminView.html',
+                    controller: 'AdminController'
+                }
+            }
+        });
+        $urlRouterProvider.otherwise('/');
 }]);
