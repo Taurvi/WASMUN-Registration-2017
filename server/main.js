@@ -28,8 +28,9 @@ io.on('connection', function(socket){
             });
     });
 
-    socket.on('sendRegistration', function() {
-        firebase.postRegistration();
+    socket.on('sendRegistration', function(data) {
+        console.log('[Main] Registration data received from client.')
+        firebase.postRegistration(data);
     });
 });
 

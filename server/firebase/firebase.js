@@ -48,15 +48,20 @@ var Firebase = function () {
    });
 };
 
-Firebase.prototype.postRegistration = function() {
+Firebase.prototype.postRegistration = function(data) {
+    console.log('[FirebasePostRegistration] Raw data received from client.');
+    var jsonData = JSON.parse(data);
+    console.log('[FirebasePostRegistration] Raw data converted to JSON.');
+    database.ref('/2017/').push(jsonData);
+    console.log('[FirebasePostRegistration] Submitted data to server.');
     // Read temp JSON file
-    _readClientDataMock().then(function success(data) {
+    /*_readClientDataMock().then(function success(data) {
         database.ref('/2017/').push(data);
         // database.set(data);
         console.log('[FirebasePostRegistration] Submitted mock data');
     }, function error(err) {
         console.log('[FirebasePostRegistration] Error reading mock data');
-    });
+    });*/
 };
 
 exports.Firebase = Firebase;
