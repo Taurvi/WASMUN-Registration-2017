@@ -29,20 +29,53 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
         {
             rules: {
                 schoolName: {
-                    minlength: 2,
+                    required: true
+                },
+                schoolAddressLineOne: {
+                    required: true
+                },
+                schoolAddressLineTwo: {
+                    required: true
+                },
+                schoolAddressCity: {
+                    required: true
+                },
+                schoolAddressZip: {
+                    required: true
+                },
+                adviserName: {
                     required: true
                 },
                 adviserEmail: {
                     required: true,
                     email: true
+                },
+                adviserPhone: {
+                    required: true,
+                    phoneUS: true
+                },
+                headDelegateOneName: {
+                    required: true
+                },
+                headDelegateOneEmail: {
+                    required: true,
+                    email: true
+                },
+                headDelegateOnePhone: {
+                    required: true,
+                    phoneUS: true
+                },
+                delegationSize: {
+                    required: true,
+                    min: 0,
+                    digits: true
                 }
             },
             highlight: function(element) {
-                $(element).closest('.control-group').removeClass('success').addClass('has-error');
+                $(element).closest('.control-group').removeClass('has-success').addClass('has-error');
             },
             success: function(element) {
                 element = element.closest('.control-group');
-                console.log(element);
                 if (element.hasClass('has-error')) {
                     element.addClass('valid').removeClass('has-error').addClass('has-success');
                 }
@@ -50,18 +83,16 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
         });
 
     $scope.registration = {};
-
+    var register = new RegistrationClass;
     $scope.submit = function(data) {
         $scope.registration = angular.copy(data);
 
         mySocket.emit('sendRegistration', $scope.registration);
+        //$scope.clear
     };
 
     $scope.clear = function(form) {
-        if (form) {
-            form.$setPristine();
-            form.$setUntouched();
-        }
+        $('#form').validate().resetForm();
         $scope.data = angular.copy($scope.registration);
 
     //var test = new RegistrationClass;
@@ -81,4 +112,8 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
     //$scope.testEmit = function() {
     //    mySocket.emit('sendRegistration', test);
     };
+
+    function addMemberState(country) {
+
+    }
 }]);
