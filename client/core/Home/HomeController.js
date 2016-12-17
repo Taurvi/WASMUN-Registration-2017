@@ -1,13 +1,11 @@
 'use strict';
 RegistrationModule = angular.module('RegistrationModule');
-RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert', function(mySocket, $scope, $alert) {
+RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert', 'RegistrationClass', function(mySocket, $scope, $alert, RegistrationClass) {
     $scope.$on('socket:error', function (ev, data) {
         console.log('test');
     });
 
-    $scope.testEmit = function() {
-        mySocket.emit('getMatrix');
-    };
+
 
     var showError = false;
 
@@ -30,4 +28,22 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
     mySocket.on('sendMatrix', function(data) {
         console.log(data);
     });
+
+    var test = new RegistrationClass;
+    test.getDelegationInfo().setSize(10);
+    test.getDelegationInfo().setCost(100);
+    test.getDelegationInfo().setDiscount(true);
+    test.getSchoolInfo().setName('foo');
+    test.getSchoolInfo().setAddress('baz');
+    test.getCountrySelection().addCountry('foo', ['baz', 'qux']);
+    test.getCountrySelection().addCountry('bar', ['qux']);
+    test.getDelegationContacts().setAdvisor('foo', 'bar@baz', '1234567890');
+    test.getDelegationContacts().addHeadDelegate('foo', 'bar@baz', '1234567890');
+    test.getDelegationContacts().addHeadDelegate('qux', 'baz@bar', '0987654321');
+
+    console.log(test.stringify());
+
+    $scope.testEmit = function() {
+        mySocket.emit('sendRegistration', test);
+    };
 }]);

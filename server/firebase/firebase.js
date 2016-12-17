@@ -50,9 +50,7 @@ var Firebase = function () {
 
 Firebase.prototype.postRegistration = function(data) {
     console.log('[FirebasePostRegistration] Raw data received from client.');
-    var jsonData = JSON.parse(data);
-    console.log('[FirebasePostRegistration] Raw data converted to JSON.');
-    database.ref('/2017/').push(jsonData);
+    database.ref('/2017/').push(data);
     console.log('[FirebasePostRegistration] Submitted data to server.');
     // Read temp JSON file
     /*_readClientDataMock().then(function success(data) {

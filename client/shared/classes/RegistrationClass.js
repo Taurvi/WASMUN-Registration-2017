@@ -80,7 +80,8 @@ RegistrationModule.factory('RegistrationClass', [
             object.schoolInfo = this.getSchoolInfo().stringify();
             object.countrySelection = this.getCountrySelection().stringify();
             object.delegationContacts = this.getDelegationContacts().stringify();
-            return JSON.stringify(object);
+            var stringified =  JSON.stringify(object);
+            return JSON.parse(stringified);
         };
 
         // TODO: Do I really need a stringify class here...
