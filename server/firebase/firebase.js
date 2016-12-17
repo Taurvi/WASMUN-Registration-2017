@@ -82,6 +82,8 @@ var Firebase = function () {
 
 Firebase.prototype.postRegistration = function(data) {
     _authFirebase().then(function success() {
+        var submitted = new Date();
+        data.date = submitted.toString();
         console.log('[FirebasePostRegistration] Raw data received from client.');
         database.ref('/2017/').push(data);
         console.log('[FirebasePostRegistration] Submitted data to server.');
