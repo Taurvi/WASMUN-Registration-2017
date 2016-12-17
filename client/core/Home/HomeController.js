@@ -65,9 +65,20 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
                     required: true,
                     phoneUS: true
                 },
+                headDelegateTwoName: {
+                    required: true
+                },
+                headDelegateTwoEmail: {
+                    required: true,
+                    email: true
+                },
+                headDelegateTwoPhone: {
+                    required: true,
+                    phoneUS: true
+                },
                 delegationSize: {
                     required: true,
-                    min: 0,
+                    min: 1,
                     digits: true
                 }
             },
