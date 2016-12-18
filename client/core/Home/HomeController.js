@@ -34,9 +34,6 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
                 schoolAddressLineOne: {
                     required: true
                 },
-                schoolAddressLineTwo: {
-                    required: true
-                },
                 schoolAddressCity: {
                     required: true
                 },
@@ -81,11 +78,6 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
                     required: true,
                     min: 1,
                     digits: true
-                },
-                slots: {
-                    required: true,
-                    min: 1,
-                    digits: true
                 }
             },
             highlight: function(element) {
@@ -101,15 +93,42 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
 
     $scope.submit = function(data) {
         var register = new RegistrationClass;
-        // var school = register.SchoolInfoClass;
-        // var countrySelect = new CountrySelectionClass;
-        // var delegation = new DelegationInfoClass;
-        // var delegationContacts = new DelegationContactsClass;
-        // delegationContacts.setAdvisor(delegationContacts.adviser.name, )
-        console.log(data);
-        // register.delegationContacts = delegationContacts;
+        var school = register.getSchoolInfo();
+        var countrySelect = register.getCountrySelection();
+        var delegation = register.getDelegationInfo();
+        var delegationContacts = register.getDelegationContacts();
 
+        var inputSchool = data.schoolInfo;
+        school.setName(inputSchool.name);
 
+        if (inputSchool.addressLineTwo != "") {
+            school.setAddress(inputSchool.addressLineOne + " " + inputSchool.addressLineTwo + " " +
+                inputSchool.addressCity + " " + inputSchool.addressZip);
+        } else {
+            school.setAddress(inputSchool.addressLineOne + " " +
+                inputSchool.addressCity + " " + inputSchool.addressZip);
+        }
+
+        var inputDelegationAdviser = data.delegationContacts.adviser;
+        var inputDelegationHead = data.delegationContacts.headDelegateOne;
+        var inputDelegationHeadTwo = data.delegationContacts.headDelegateTwo;
+        console.log(inputDelegationHead);
+        delegationContacts.setAdvisor(inputDelegationAdviser.name, inputDelegationAdviser.email, inputDelegationAdviser.phone);
+        delegationContacts.addHeadDelegate(inputDelegationHead.name, inputDelegationHead.email, inputDelegationHead.phone);
+
+        if (inputDelegationHeadTwo) {
+            delegationContacts.addHeadDelegate(inputDelegationHeadTwo.name, inputDelegationHeadTwo.email, inputDelegationHeadTwo.phone);
+        }
+
+        //var inputCountrySelect = data.countrySelection;
+        //for each
+        //countrySelect.addCountry();
+        
+        var inputDelegation = data.delegationInfo;
+        delegation.setSize(inputDelegation.delegationSize);
+        delegation.setCost(inputDelegation.estCost);
+
+        console.log(register);
         //mySocket.emit('sendRegistration', $scope.registration);
         //$scope.clear
     };
