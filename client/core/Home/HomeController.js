@@ -41,7 +41,8 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
                     required: true
                 },
                 schoolAddressZip: {
-                    required: true
+                    required: true,
+                    zipcodeUS: true
                 },
                 adviserName: {
                     required: true
@@ -80,6 +81,11 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
                     required: true,
                     min: 1,
                     digits: true
+                },
+                slots: {
+                    required: true,
+                    min: 1,
+                    digits: true
                 }
             },
             highlight: function(element) {
@@ -98,7 +104,7 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
     $scope.submit = function(data) {
         $scope.registration = angular.copy(data);
 
-        mySocket.emit('sendRegistration', $scope.registration);
+        //mySocket.emit('sendRegistration', $scope.registration);
         //$scope.clear
     };
 
