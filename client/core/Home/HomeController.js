@@ -99,10 +99,16 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
             }
         });
 
-    $scope.registration = {};
-    var register = new RegistrationClass;
     $scope.submit = function(data) {
-        $scope.registration = angular.copy(data);
+        var register = new RegistrationClass;
+        // var school = register.SchoolInfoClass;
+        // var countrySelect = new CountrySelectionClass;
+        // var delegation = new DelegationInfoClass;
+        // var delegationContacts = new DelegationContactsClass;
+        // delegationContacts.setAdvisor(delegationContacts.adviser.name, )
+        console.log(data);
+        // register.delegationContacts = delegationContacts;
+
 
         //mySocket.emit('sendRegistration', $scope.registration);
         //$scope.clear
@@ -110,7 +116,6 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
 
     $scope.clear = function(form) {
         $('#form').validate().resetForm();
-        $scope.data = angular.copy($scope.registration);
 
     //var test = new RegistrationClass;
     //test.getDelegationInfo().setSize(10);
