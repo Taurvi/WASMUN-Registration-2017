@@ -29,40 +29,112 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
         {
             rules: {
                 schoolName: {
-                    minlength: 2,
+                    required: true
+                },
+                schoolAddressLineOne: {
+                    required: true
+                },
+                schoolAddressCity: {
+                    required: true
+                },
+                schoolAddressZip: {
+                    required: true,
+                    zipcodeUS: true
+                },
+                adviserName: {
                     required: true
                 },
                 adviserEmail: {
                     required: true,
                     email: true
+                },
+                adviserPhone: {
+                    required: true,
+                    phoneUS: true
+                },
+                headDelegateOneName: {
+                    required: true
+                },
+                headDelegateOneEmail: {
+                    required: true,
+                    email: true
+                },
+                headDelegateOnePhone: {
+                    required: true,
+                    phoneUS: true
+                },
+                headDelegateTwoName: {
+                    required: true
+                },
+                headDelegateTwoEmail: {
+                    required: true,
+                    email: true
+                },
+                headDelegateTwoPhone: {
+                    required: true,
+                    phoneUS: true
+                },
+                delegationSize: {
+                    required: true,
+                    min: 1,
+                    digits: true
                 }
             },
             highlight: function(element) {
-                $(element).closest('.control-group').removeClass('success').addClass('has-error');
+                $(element).closest('.control-group').removeClass('has-success').addClass('has-error');
             },
             success: function(element) {
                 element = element.closest('.control-group');
-                console.log(element);
                 if (element.hasClass('has-error')) {
                     element.addClass('valid').removeClass('has-error').addClass('has-success');
                 }
             }
         });
 
-    $scope.registration = {};
-
     $scope.submit = function(data) {
-        $scope.registration = angular.copy(data);
+        var register = new RegistrationClass;
+        var school = register.getSchoolInfo();
+        var countrySelect = register.getCountrySelection();
+        var delegation = register.getDelegationInfo();
+        var delegationContacts = register.getDelegationContacts();
 
-        mySocket.emit('sendRegistration', $scope.registration);
+        var inputSchool = data.schoolInfo;
+        school.setName(inputSchool.name);
+
+        if (inputSchool.addressLineTwo != "") {
+            school.setAddress(inputSchool.addressLineOne + " " + inputSchool.addressLineTwo + " " +
+                inputSchool.addressCity + " " + inputSchool.addressZip);
+        } else {
+            school.setAddress(inputSchool.addressLineOne + " " +
+                inputSchool.addressCity + " " + inputSchool.addressZip);
+        }
+
+        var inputDelegationAdviser = data.delegationContacts.adviser;
+        var inputDelegationHead = data.delegationContacts.headDelegateOne;
+        var inputDelegationHeadTwo = data.delegationContacts.headDelegateTwo;
+        console.log(inputDelegationHead);
+        delegationContacts.setAdvisor(inputDelegationAdviser.name, inputDelegationAdviser.email, inputDelegationAdviser.phone);
+        delegationContacts.addHeadDelegate(inputDelegationHead.name, inputDelegationHead.email, inputDelegationHead.phone);
+
+        if (inputDelegationHeadTwo) {
+            delegationContacts.addHeadDelegate(inputDelegationHeadTwo.name, inputDelegationHeadTwo.email, inputDelegationHeadTwo.phone);
+        }
+
+        //var inputCountrySelect = data.countrySelection;
+        //for each
+        //countrySelect.addCountry();
+        
+        var inputDelegation = data.delegationInfo;
+        delegation.setSize(inputDelegation.delegationSize);
+        delegation.setCost(inputDelegation.estCost);
+
+        console.log(register);
+        //mySocket.emit('sendRegistration', $scope.registration);
+        //$scope.clear
     };
 
     $scope.clear = function(form) {
-        if (form) {
-            form.$setPristine();
-            form.$setUntouched();
-        }
-        $scope.data = angular.copy($scope.registration);
+        $('#form').validate().resetForm();
 
     //var test = new RegistrationClass;
     //test.getDelegationInfo().setSize(10);
@@ -81,4 +153,8 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
     //$scope.testEmit = function() {
     //    mySocket.emit('sendRegistration', test);
     };
+
+    function addMemberState(country) {
+
+    }
 }]);
