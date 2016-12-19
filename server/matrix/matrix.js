@@ -26,6 +26,7 @@ var _readRawMatrix = function() {
 }
 
 var _parseRawMatrix = function() {
+    _parsedMatrix = [];
     _rawMatrix.map(function(row) {
         var parsedEntry = {};
         parsedEntry.country = row.splice(0, 1)[0];

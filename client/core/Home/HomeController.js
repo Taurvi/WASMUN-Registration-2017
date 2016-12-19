@@ -2,6 +2,8 @@
 RegistrationModule = angular.module('RegistrationModule');
 RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert', 'RegistrationClass', function(mySocket, $scope, $alert, RegistrationClass) {
     var alerts = {};
+    $scope.data = {};
+    $scope.data.countrySelection = [];
 
     alerts.errorConnect = $alert({title: 'Error 404:', content: 'Unable to connect to server. Please email usgit@wasmun.org immediately.', placement: 'top-right', type: 'danger', show: false});
     alerts.successConnect = $alert({title: 'Connection Verified:', content: 'Server uplink has been established.', placement: 'top-right', type: 'success', show: false, duration: 5});
@@ -18,10 +20,12 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
         mySocket.emit('getMatrix');
     });
 
-    $scope.matrix = {};
+    $scope.matrix = [];
     mySocket.on('sendMatrix', function(data) {
         $scope.matrix = JSON.parse(data);
+        console.log($scope.matrix);
     });
+
 
     // Form
     $('#form').validate(
@@ -119,17 +123,19 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
             delegationContacts.addHeadDelegate(inputDelegationHeadTwo.name, inputDelegationHeadTwo.email, inputDelegationHeadTwo.phone);
         }
 
-        //var inputCountrySelect = data.countrySelection;
-        //for each
+        var inputCountrySelect = data.countrySelection;
+        inputCountrySelect.map(function(entry) {
+           countrySelect.addCountry(entry.country, entry.committees);
+        });
         //countrySelect.addCountry();
         
         var inputDelegation = data.delegationInfo;
-        delegation.setSize(inputDelegation.delegationSize);
+        delegation.setSize(inputDelegation.size);
         delegation.setCost(inputDelegation.estCost);
 
         console.log(register);
-        //mySocket.emit('sendRegistration', $scope.registration);
-        //$scope.clear
+        mySocket.emit('sendRegistration', register);
+        $scope.clear
     };
 
     $scope.clear = function(form) {
@@ -153,7 +159,21 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
     //    mySocket.emit('sendRegistration', test);
     };
 
-    function addMemberState(country) {
 
-    }
+    $scope.addMemberState = function (entry) {
+        var originalIndex = $scope.matrix.indexOf(entry);
+        $scope.matrix[originalIndex].selected = true;
+        /*var selection = {};
+        selection.country = country;
+        selection.committees = committees;*/
+        $scope.data.countrySelection.push($scope.matrix[originalIndex]);
+        console.log($scope.data.countrySelection);
+    };
+
+    $scope.removeMemberState = function(index) {
+        var originalIndex = $scope.matrix.indexOf($scope.data.countrySelection[index]);
+        $scope.matrix[originalIndex].selected = false;
+        $scope.data.countrySelection.splice(index, 1);
+        console.log($scope.data.countrySelection);
+    };
 }]);
