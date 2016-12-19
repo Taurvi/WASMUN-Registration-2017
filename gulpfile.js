@@ -86,10 +86,11 @@ src.jsLibsMin.push(dir.bower + 'angular-strap/dist/angular-strap.tpl.min.js');
 src.jsLibsMin.push(dir.bower + 'socket.io-client/dist/socket.io.js/socket.io.min.js');
 src.jsLibsMin.push(dir.bower + 'angular-socket-io/socket.js/socket.min.js');
 // CSS
-src.css.push(dir.client + 'assets/css/**/*.css');
 src.css.push(dir.bower + 'bootstrap/dist/css/bootstrap.css');
+src.css.push(dir.bower + 'bootstrap-additions/dist/bootstrap-additions.css')
 src.css.push(dir.bower + 'components-font-awesome/css/font-awesome.css');
 src.css.push(dir.bower + 'angular-motion/dist/angular-motion.css');
+src.css.push(dir.client + 'assets/css/**/*.css');
 // Fonts
 src.fonts.push(dir.bower + 'components-font-awesome/fonts/fontawesome-webfont.*')
 // Views
