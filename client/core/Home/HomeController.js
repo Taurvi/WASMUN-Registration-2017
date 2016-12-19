@@ -4,9 +4,6 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
     var alerts = {};
     $scope.data = {};
     $scope.data.countrySelection = [];
-    $scope.data
-    //$scope.data.delegationInfo.delegationSize = 1;
-    console.log($scope.data);
 
     alerts.errorConnect = $alert({title: 'Error 404:', content: 'Unable to connect to server. Please email usgit@wasmun.org immediately.', placement: 'top-right', type: 'danger', show: false});
     alerts.successConnect = $alert({title: 'Connection Verified:', content: 'Server uplink has been established.', placement: 'top-right', type: 'success', show: false, duration: 5});
@@ -26,7 +23,6 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
     $scope.matrix = [];
     mySocket.on('sendMatrix', function(data) {
         $scope.matrix = JSON.parse(data);
-        console.log($scope.matrix);
     });
 
     // Form
