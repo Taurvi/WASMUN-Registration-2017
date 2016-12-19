@@ -97,11 +97,13 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <h4>Section III: Country Selection</h4>
-            <h5>Select as many or as few countries that your delegation is interested in. We cannot promise you will get all of them, but we will keep them in mind when we do country assignments.</h5>
             <div class="row">
                 <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4">
-                    <label for="countrySearch">Search for a Country:</label>
-                    <input class="form-control" id="countrySearch" name="countrySearch" ng-model="countrySearch"/>
+                    <h5>Select as many or as few countries that your delegation is interested in. We cannot guarantee assignments but will keep them in mind.</h5>
+                    <div>
+                        <label for="countrySearch">Search for a Country:</label>
+                        <input class="form-control" id="countrySearch" name="countrySearch" ng-model="countrySearch"/>
+                    </div>
                 </div>
             </div>
             <div ng-if="data.countrySelection.length > 0">
@@ -114,7 +116,7 @@
                     <div class="panel-heading" role="tab">
                         <h4 class="panel-title">
                             <a bs-collapse-toggle>
-                                Toggle Country Matrix Display
+                                Toggle Country Display
                             </a>
                         </h4>
                     </div>
