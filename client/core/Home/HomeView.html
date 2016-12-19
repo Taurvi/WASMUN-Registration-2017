@@ -1,39 +1,34 @@
 <h1 class="text-center">WASMUN Registration 2017</h1>
 <br>
-<form name="form" id="form" role="form" class="form form-horizontal">
+<form name="form" id="form" role="form" class="form form-horizontal" ng-submit="submit(data)">
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4">
             <h4>Section I: School Information</h4>
             <div class="control-group">
                 <label class="control-label" for="schoolName">School Name</label>
                 <input type="text" name="schoolName" id="schoolName" class="form-control" ng-model="data.schoolInfo.name" />
-                <label id="schoolName-error" class="error" for="schoolName"></label>
             </div>
 
             <h5>School Address:</h5>
             <div class="control-group">
                 <label class="control-label" for="schoolAddressLineOne">Address Line One</label>
                 <input type="text" name="schoolAddressLineOne" id="schoolAddressLineOne" class="form-control" ng-model="data.schoolInfo.addressLineOne" />
-                <label id="schoolAddressLineOne-error" class="error" for="schoolAddressLineOne"></label>
             </div>
 
             <div class="control-group">
                 <label class="control-label" for="schoolAddressLineTwo">Address Line Two</label>
                 <input type="text" name="schoolAddressLineTwo" id="schoolAddressLineTwo" class="form-control" ng-model="data.schoolInfo.addressLineTwo" />
-                <label id="schoolAddressLineTwo-error" class="error" for="schoolAddressLineTwo"></label>
             </div>
 
             <div class="row">
                 <div class="control-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <label class="control-label" for="schoolAddressCity">Address City</label>
                     <input type="text" name="schoolAddressCity" id="schoolAddressCity" class="form-control" ng-model="data.schoolInfo.addressCity" />
-                    <label id="schoolAddressCity-error" class="error" for="schoolAddressCity"></label>
                 </div>
 
                 <div class="control-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <label class="control-label" for="schoolAddressZip">Address Zip Code</label>
                     <input type="text" name="schoolAddressZip" id="schoolAddressZip" class="form-control" ng-model="data.schoolInfo.addressZip" />
-                    <label id="schoolAddressZip-error" class="error" for="schoolAddressZip"></label>
                 </div>
             </div>
         </div>
@@ -46,20 +41,17 @@
             <div class="control-group">
                 <label class="control-label" for="adviserName">Name</label>
                 <input type="text" class="form-control" id="adviserName" name="adviserName" ng-model="data.delegationContacts.adviser.name"/>
-                <label id="adviserName-error" class="error" for="adviserName"></label>
             </div>
 
             <div class="control-group">
                 <label class="control-label" for="adviserEmail">E-mail</label>
                 <input type="email" id="adviserEmail" name="adviserEmail" class="form-control" ng-model="data.delegationContacts.adviser.email" />
-                <label id="adviserEmail-error" class="error" for="adviserEmail"></label>
             </div>
 
             <!-- need to validate -->
             <div class="control-group">
                 <label class="control-label" for="adviserPhone">Phone</label>
                 <input type="text" id="adviserPhone" name="adviserPhone" class="form-control" ng-model="data.delegationContacts.adviser.phone" />
-                <label id="adviserPhone-error" class="error" for="adviserPhone"></label>
             </div>
             <hr style="height: 1px; background-color:#bebebe;" />
 
@@ -67,19 +59,16 @@
             <div class="control-group">
                 <label class="control-label" for="headDelegateOneName">Name</label>
                 <input type="text" id="headDelegateOneName" name="headDelegateOneName" class="form-control" ng-model="data.delegationContacts.headDelegateOne.name"/>
-                <label id="headDelegateOneName-error" class="error" for="headDelegateOneName"></label>
             </div>
 
             <div class="control-group">
                 <label class="control-label" for="headDelegateOneEmail">E-mail</label>
                 <input type="email" class="form-control" id="headDelegateOneEmail" name="headDelegateOneEmail" ng-model="data.delegationContacts.headDelegateOne.email" />
-                <label id="headDelegateOneEmail-error" class="error" for="headDelegateOneEmail"></label>
             </div>
 
             <div class="control-group">
                 <label class="control-label" for="headDelegateOnePhone">Phone</label>
                 <input type="text" class="form-control" id="headDelegateOnePhone" name="headDelegateOnePhone" ng-model="data.delegationContacts.headDelegateOne.phone" placeholder="##########"/>
-                <label id="headDelegateOnePhone-error" class="error" for="headDelegateOnePhone"></label>
             </div><br>
 
             <input type="button" class="btn btn-default" ng-click="addHeadDelegate = true" value="Add another head delegate" />
@@ -90,19 +79,16 @@
                 <div class="control-group">
                     <label class="control-label" for="headDelegateTwoName">Name</label>
                     <input type="text" id="headDelegateTwoName" class="form-control" ng-model="data.delegationContacts.headDelegateTwo.name"/>
-                    <label id="headDelegateTwoName-error" class="error" for="headDelegateTwoName"></label>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="headDelegateTwoEmail">E-mail</label>
                     <input type="email" class="form-control" id="headDelegateTwoEmail" name="headDelegateTwoEmail" ng-model="data.delegationContacts.headDelegateTwo.email" />
-                    <label id="headDelegateTwoEmail-error" class="error" for="headDelegateTwoEmail"></label>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="headDelegateTwoPhone">Phone</label>
-                    <input type="text" class="form-control" id="headDelegateTwoPhone" name="headDelegateTwoPhone" ng-model="data.delagationContacts.headDelegateTwo.phone"/>
-                    <label id="headDelegateTwoPhone-error" class="error" for="headDelegateTwoPhone"></label>
+                    <input type="text" class="form-control" id="headDelegateTwoPhone" name="headDelegateTwoPhone" ng-model="data.delegationContacts.headDelegateTwo.phone"/>
                 </div>
             </div>
         </div>
@@ -112,7 +98,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <h4>Section III: Country Selection</h4>
             <h5>Select as many or as few countries that your delegation is interested in. We cannot promise you will get all of them, but we will keep them in mind when we do country assignments.</h5>
-            <div class="form-group">
+            <div>
                 <label for="countrySearch">Search for a Country:</label>
                 <input class="form-control" id="countrySearch" name="countrySearch" ng-model="countrySearch"/>
             </div>
@@ -177,8 +163,7 @@
             <h4>Section IV: Delegation Information</h4>
             <div class="control-group" style="width: 50%">
                 <label class="label-control" for="delegationSize">Intended Delegation Size</label>
-                <input type="number" id="delegationSize" name="delegationSize" min="0" class="form-control" ng-model="data.delegationInfo.size" placeholder="0"/>
-                <label id="delegationSize-error" class="error" for="delegationSize"></label>
+                <input type="number" id="delegationSize" name="delegationSize" min="1" class="form-control" ng-model="data.delegationInfo.delegationSize" ng-init="data.delegationInfo.delegationSize = 1"/>
             </div>
 
             <!--<div class="control-group" style="width: 50%">
@@ -187,8 +172,8 @@
                 <label id="slots-error" class="error" for="slots"></label>
             </div>-->
             <div style="width: 50%">
-                <label for="estCost">Estimated Cost ($)</label>
-                <input type="text" id="estCost" class="form-control" ng-model="data.delegationInfo.estCost" ng-readonly="true" ng-value="((30 * data.delegationInfo.size) + 50) || 50">
+                <label for="estCost">Estimated Cost</label>
+                <input type="text" id="estCost" class="form-control" ng-readonly="true" ng-model="data.delegationInfo.estCost" ng-bind="data.delegationInfo.estCost ='$'.concat((30 * data.delegationInfo.delegationSize) + 50)">
             </div>
         </div>
     </div>
@@ -197,7 +182,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4">
             <input type="button" class="btn btn-default" ng-click="clear()" value="Clear" />
-            <input type="submit" class="btn btn-primary" ng-click="submit(data)" value="Submit" />
+            <input type="submit" class="btn btn-primary" value="Submit" />
         </div>
     </div>
 </form>
