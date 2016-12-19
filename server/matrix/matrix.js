@@ -7,7 +7,7 @@ var _paths = {};
 _paths.rawMatrix = './data/raw-matrix.json';
 
 var _rawMatrix = [];
-var _parsedMatrix = {};
+var _parsedMatrix = [];
 
 var fs_readFile = Q.denodeify(fs.readFile);
 
@@ -27,13 +27,15 @@ var _readRawMatrix = function() {
 
 var _parseRawMatrix = function() {
     _rawMatrix.map(function(row) {
-        var country = row.splice(0, 1);
-        _parsedMatrix[country] = [];
+        var parsedEntry = {};
+        parsedEntry.country = row.splice(0, 1)[0];
+        parsedEntry.committees = [];
         row.map(function(col) {
             if (col) {
-                _parsedMatrix[country].push(col);
+                parsedEntry.committees.push(col);
             }
         });
+        _parsedMatrix.push(parsedEntry);
     });
     return JSON.stringify(_parsedMatrix)
 }

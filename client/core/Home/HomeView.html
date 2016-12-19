@@ -111,32 +111,40 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <h4>Section III: Country Selection</h4>
-            <h5>Preferred Countries:</h5>
+            <h5>Select as many or as few countries that your delegation is interested in. We cannot promise you will get all of them, but we will keep them in mind when we do country assignments.</h5>
+            <div class="form-group">
+                <label for="countrySearch">Search for a Country:</label>
+                <input class="form-control" id="countrySearch" name="countrySearch" ng-model="countrySearch"/>
+            </div>
             <div style="height: 800px; overflow-y: auto">
                 <table ng-show="matrix.length != 0"
-                       class="table table-responsive table-bordered table-striped" style="white-space: nowrap">
+                       class="table table-responsive table-bordered table-striped table-condensed" style="white-space: nowrap">
                     <tr>
-                        <th class="col-xs-1">Add</th>
-                        <th class="col-xs-1">Slots</th>
+                        <th class="col-xs-1 text-center">Add</th>
+                        <th class="col-xs-1 text-center">Slots</th>
                         <th class="col-xs-1">Country</th>
-                        <th class="col-xs-1">GA3</th>
-                        <th class="col-xs-1">ECOSOC</th>
-                        <th class="col-xs-1">UN-HABITAT</th>
-                        <th class="col-xs-1">UNHCR-UNSRM</th>
-                        <th class="col-xs-1">HRC-UPR</th>
-                        <th class="col-xs-1">SC</th>
-                        <th class="col-xs-1">ICJ</th>
+                        <th class="col-xs-1 text-center">GA3</th>
+                        <th class="col-xs-1 text-center">ECOSOC</th>
+                        <th class="col-xs-1 text-center">UN-HABITAT</th>
+                        <th class="col-xs-1 text-center">UNHCR-UNSRM</th>
+                        <th class="col-xs-1 text-center">HRC-UPR</th>
+                        <th class="col-xs-1 text-center">SC</th>
+                        <th class="col-xs-1 text-center">ICJ</th>
                     </tr>
 
-                    <tr ng-repeat="(country, committees) in matrix">
-                        <td class="text-info"><i class="fa fa-2x fa-plus-circle"
-                                                 style="cursor: hand;"
-                                                 ng-click="addMemberState(country.country)"></i></td>
-                        <td>{{}}</td>
-                        <td>{{country}}</td>
-                        <td ng-repeat="committee in country.committees"><span ng-show="committee"
-                                                                              class="text-success"><i
-                                class="fa fa-user"></i></span></td>
+                    <tr ng-repeat="entry in matrix | filter:countrySearch">
+                        <td class="text-info text-center">
+                            <i class="fa fa-2x fa-plus-circle" style="cursor: hand;" ng-click="addMemberState(entry.country)"></i>
+                        </td>
+                        <td class="text-center">{{entry.committees.length}}</td>
+                        <td>{{entry.country}}</td>
+                        <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('GA3') >= 0"></i></td>
+                        <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('ECOSOC') >= 0"></i></td>
+                        <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('UN-HABITAT') >= 0"></i></td>
+                        <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('UNHCR-UNSRM') >= 0"></i></td>
+                        <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('HRC-UPR') >= 0"></i></td>
+                        <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('SC') >= 0"></i></td>
+                        <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('ICJ') >= 0"></i></td>
                     </tr>
 
 
