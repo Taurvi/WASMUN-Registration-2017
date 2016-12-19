@@ -157,6 +157,7 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
     //
     //$scope.testEmit = function() {
     //    mySocket.emit('sendRegistration', test);
+        $scope.data = {};
     };
 
 

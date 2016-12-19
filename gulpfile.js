@@ -83,7 +83,7 @@ src.jsLibsMin.push(dir.bower + 'angular-animate/angular-animate.min.js');
 src.jsLibsMin.push(dir.bower + 'angular-ui-router/release/angular-ui-router.min.js');
 src.jsLibsMin.push(dir.bower + 'angular-strap/dist/angular-strap.min.js');
 src.jsLibsMin.push(dir.bower + 'angular-strap/dist/angular-strap.tpl.min.js');
-src.jsLibsMin.push(dir.bower + 'socket.io-client/dist/socket.io.js/socket.io.min.js');
+src.jsLibsMin.push(dir.bower + 'socket.io-client/dist/socket.io.min.js');
 src.jsLibsMin.push(dir.bower + 'angular-socket-io/socket.js/socket.min.js');
 // CSS
 src.css.push(dir.bower + 'bootstrap/dist/css/bootstrap.css');
