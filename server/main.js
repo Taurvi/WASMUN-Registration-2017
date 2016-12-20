@@ -8,7 +8,9 @@ var matrix = new Matrix();
 var Firebase = require('./firebase/firebase').Firebase;
 var firebase = new Firebase();
 
-
+http.listen(3000, function() {
+    console.log('[Main] Listening on *:3000')
+});
 
 io.on('connection', function(socket){
     console.log('[Main] User ' + socket.id + ' has connected.');
@@ -33,7 +35,3 @@ io.on('connection', function(socket){
         firebase.postRegistration(data);
     });
 });
-
-http.listen(3000, function() {
-    console.log('[Main] Listening on *:3000')
-})
