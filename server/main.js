@@ -1,12 +1,15 @@
 var app = require('express')();
 var http = require('http').Server(app);
-var io = require('socket.io')(http, { origins: '*:*'});
+var io = require('socket.io')(http);
+var cors = require('cors');
 
 var Matrix = require('./matrix/matrix').Matrix;
 var matrix = new Matrix();
 
 var Firebase = require('./firebase/firebase').Firebase;
 var firebase = new Firebase();
+
+app.use(cors());
 
 http.listen(3000, function() {
     console.log('[Main] Listening on *:3000')
