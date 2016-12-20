@@ -8,7 +8,7 @@ var RegistrationModule = angular.module('RegistrationModule',
     ]);
 
 RegistrationModule.factory('mySocket', ['socketFactory', function (socketFactory) {
-    var myIoSocket = io.connect('http://localhost:3000');
+    var myIoSocket = io.connect('localhost:3000');
     var mySocket = socketFactory({
         ioSocket: myIoSocket
     });
