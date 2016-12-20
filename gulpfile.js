@@ -18,7 +18,7 @@ var pngquant = require('imagemin-pngquant');
 var dir = {};
 dir.bower = 'bower_components/';
 dir.client = 'client/';
-dir.public = 'public/';
+dir.public = 'html/';
 dir.shared = dir.client + 'shared/';
 // Environment Switch (run as: NODE_ENV=production gulp)
 var env = process.env.NODE_ENV || 'development';
@@ -45,6 +45,8 @@ var finalized = {};
 finalized.js = '';
 finalized.jsLibs = '';
 finalized.css = '';
+finalized.baseHTMLDev = '<base href="/WASMUN-Registration-2017/html/"/>';
+finalized.baseHTMLProd = '<base href="/"/>';
 
 /************************
  * SETTING SOURCE FILES *
@@ -146,7 +148,7 @@ gulp.task('js', function () {
             .pipe(concat('libs.js'))
             .pipe(gulp.dest(dest.jsLibs));
         // Create the included libraries
-        finalized.jsLibs = '<script type=\'text/javascript\' src=\'js/libs/libs.js\'></script>';
+        finalized.jsLibs = '<script type="text/javascript" src="js/libs/libs.js"></script>';
     }
 });
 
@@ -192,17 +194,34 @@ gulp.task('images', function () {
 
 // Builds index with dependent JS and CSS files
 gulp.task('index', function(){
-    gulp.src(src.index)
-        .pipe( replace('<!--#INJECT-JS-LIBS#-->', finalized.jsLibs) )
-        .pipe( replace('<!--#INJECT-JS#-->', finalized.js) )
-        .pipe( replace('<!--#INJECT-CSS#-->', finalized.css) )
-        .pipe( gulp.dest(dir.public) )
-        .on('end', function(){
-            finalized.jsLibs = '';
-            finalized.js = '';
-            finalized.css = '';
-        });
+    if (env === 'development') {
+        gulp.src(src.index)
+            .pipe( replace('<!--#INJECT-HTML-BASE#-->', finalized.baseHTMLDev) )
+            .pipe( replace('<!--#INJECT-JS-LIBS#-->', finalized.jsLibs) )
+            .pipe( replace('<!--#INJECT-JS#-->', finalized.js) )
+            .pipe( replace('<!--#INJECT-CSS#-->', finalized.css) )
+            .pipe( gulp.dest(dir.public) )
+            .on('end', function(){
+                finalized.jsLibs = '';
+                finalized.js = '';
+                finalized.css = '';
+            });
+    } else {
+        gulp.src(src.index)
+            .pipe( replace('<!--#INJECT-HTML-BASE#-->', finalized.baseHTMLProd) )
+            .pipe( replace('<!--#INJECT-JS-LIBS#-->', finalized.jsLibs) )
+            .pipe( replace('<!--#INJECT-JS#-->', finalized.js) )
+            .pipe( replace('<!--#INJECT-CSS#-->', finalized.css) )
+            .pipe( gulp.dest(dir.public) )
+            .on('end', function(){
+                finalized.jsLibs = '';
+                finalized.js = '';
+                finalized.css = '';
+            });
+    }
+
 });
+
 
 /*****************
  * WATCHER TASKS *

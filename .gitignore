@@ -1,7 +1,7 @@
 .idea/
 bower_components/
 node_modules/
-public/
+html/
 npm-debug.log
 server/data/
 .DS_Store
