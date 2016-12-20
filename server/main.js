@@ -1,6 +1,6 @@
 var app = require('express')();
 var http = require('http').Server(app);
-var io = require('socket.io')(server, { origins: '*:*'});
+var io = require('socket.io')(http, { origins: '*:*'});
 
 var Matrix = require('./matrix/matrix').Matrix;
 var matrix = new Matrix();
