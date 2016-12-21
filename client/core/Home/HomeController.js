@@ -25,6 +25,17 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
         $scope.matrix = JSON.parse(data);
     });
 
+    $scope.submitSuccess = false;
+    $scope.submitError = false;
+
+    mySocket.on('registrationSuccess', function() {
+       $scope.submitSuccess = true;
+    });
+
+    mySocket.on('registrationFailed', function() {
+        $scope.submitError = true;
+    });
+
     // Form
     $('#form').validate(
         {
@@ -150,22 +161,6 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
         $("div").removeClass("has-error has-success");
         $scope.data = {};
         $('html, body').animate({ scrollTop: 0 }, 'fast');
-    //var test = new RegistrationClass;
-    //test.getDelegationInfo().setSize(10);
-    //test.getDelegationInfo().setCost(100);
-    //test.getDelegationInfo().setDiscount(true);
-    //test.getSchoolInfo().setName('foo');
-    //test.getSchoolInfo().setAddress('baz');
-    //test.getCountrySelection().addCountry('foo', ['baz', 'qux']);
-    //test.getCountrySelection().addCountry('bar', ['qux']);
-    //test.getDelegationContacts().setAdvisor('foo', 'bar@baz', '1234567890');
-    //test.getDelegationContacts().addHeadDelegate('foo', 'bar@baz', '1234567890');
-    //test.getDelegationContacts().addHeadDelegate('qux', 'baz@bar', '0987654321');
-    //
-    //console.log(test.stringify());
-    //
-    //$scope.testEmit = function() {
-    //    mySocket.emit('sendRegistration', test);
         $scope.data = {};
     };
 
@@ -173,9 +168,6 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
     $scope.addMemberState = function (entry) {
         var originalIndex = $scope.matrix.indexOf(entry);
         $scope.matrix[originalIndex].selected = true;
-        /*var selection = {};
-        selection.country = country;
-        selection.committees = committees;*/
         $scope.data.countrySelection.push($scope.matrix[originalIndex]);
     };
 

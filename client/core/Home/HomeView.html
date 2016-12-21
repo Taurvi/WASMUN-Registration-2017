@@ -1,199 +1,235 @@
-<div class="text-center">
+<h1 class="text-center">
     <img src="imgs/logo-h-medium.png" />
-</div>
+</h1>
 <h1 class="text-center">
     2017 - Registration
 </h1>
 <br>
-<form name="form" id="form" role="form" class="form form-horizontal" ng-submit="submit(data)">
-    <div class="row">
-        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
-            <h4>Section I: School Information</h4>
-            <div class="control-group">
-                <label class="control-label" for="schoolName">School Name</label>
-                <input type="text" name="schoolName" id="schoolName" class="form-control" ng-model="data.schoolInfo.name" />
-            </div>
-
-            <h5>School Address:</h5>
-            <div class="control-group">
-                <label class="control-label" for="schoolAddressLineOne">Address Line One</label>
-                <input type="text" name="schoolAddressLineOne" id="schoolAddressLineOne" class="form-control" ng-model="data.schoolInfo.addressLineOne" />
-            </div>
-
-            <div class="control-group">
-                <label class="control-label" for="schoolAddressLineTwo">Address Line Two</label>
-                <input type="text" name="schoolAddressLineTwo" id="schoolAddressLineTwo" class="form-control" ng-model="data.schoolInfo.addressLineTwo" />
-            </div>
-
-            <div class="row">
-                <div class="control-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <label class="control-label" for="schoolAddressCity">Address City</label>
-                    <input type="text" name="schoolAddressCity" id="schoolAddressCity" class="form-control" ng-model="data.schoolInfo.addressCity" />
-                </div>
-
-                <div class="control-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <label class="control-label" for="schoolAddressZip">Address Zip Code</label>
-                    <input type="text" name="schoolAddressZip" id="schoolAddressZip" class="form-control" ng-model="data.schoolInfo.addressZip" />
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
-            <h4>Section II: Delegation Contact Information</h4>
-            <h5>Adviser:</h5>
-            <div class="control-group">
-                <label class="control-label" for="adviserName">Name</label>
-                <input type="text" class="form-control" id="adviserName" name="adviserName" ng-model="data.delegationContacts.adviser.name"/>
-            </div>
-
-            <div class="control-group">
-                <label class="control-label" for="adviserEmail">E-mail</label>
-                <input type="email" id="adviserEmail" name="adviserEmail" class="form-control" ng-model="data.delegationContacts.adviser.email" />
-            </div>
-
-            <!-- need to validate -->
-            <div class="control-group">
-                <label class="control-label" for="adviserPhone">Phone</label>
-                <input type="text" id="adviserPhone" name="adviserPhone" class="form-control" ng-model="data.delegationContacts.adviser.phone" />
-            </div>
-            <hr style="height: 1px; background-color:#bebebe;" />
-
-            <h5>Head Delegate 1:</h5>
-            <div class="control-group">
-                <label class="control-label" for="headDelegateOneName">Name</label>
-                <input type="text" id="headDelegateOneName" name="headDelegateOneName" class="form-control" ng-model="data.delegationContacts.headDelegateOne.name"/>
-            </div>
-
-            <div class="control-group">
-                <label class="control-label" for="headDelegateOneEmail">E-mail</label>
-                <input type="email" class="form-control" id="headDelegateOneEmail" name="headDelegateOneEmail" ng-model="data.delegationContacts.headDelegateOne.email" />
-            </div>
-
-            <div class="control-group">
-                <label class="control-label" for="headDelegateOnePhone">Phone</label>
-                <input type="text" class="form-control" id="headDelegateOnePhone" name="headDelegateOnePhone" ng-model="data.delegationContacts.headDelegateOne.phone"/>
-            </div><br>
-
-            <input type="button" class="btn btn-default" ng-click="addHeadDelegate = true" value="Add another head delegate" />
-
-            <div ng-show="addHeadDelegate" class="check-element animate-show">
-                <hr style="height: 1px; background-color:#bebebe;"/>
-                <h5>Head Delegate 2:</h5>
+<!--<div >-->
+    <form name="form" id="form" role="form" class="form form-horizontal" ng-hide="submitSuccess || submitError" ng-submit="submit(data)">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
+                <h4>Section I: School Information</h4>
                 <div class="control-group">
-                    <label class="control-label" for="headDelegateTwoName">Name</label>
-                    <input type="text" id="headDelegateTwoName" class="form-control" ng-model="data.delegationContacts.headDelegateTwo.name"/>
+                    <label class="control-label" for="schoolName">School Name</label>
+                    <input type="text" name="schoolName" id="schoolName" class="form-control" ng-model="data.schoolInfo.name" />
+                </div>
+
+                <h5>School Address:</h5>
+                <div class="control-group">
+                    <label class="control-label" for="schoolAddressLineOne">Address Line One</label>
+                    <input type="text" name="schoolAddressLineOne" id="schoolAddressLineOne" class="form-control" ng-model="data.schoolInfo.addressLineOne" />
                 </div>
 
                 <div class="control-group">
-                    <label class="control-label" for="headDelegateTwoEmail">E-mail</label>
-                    <input type="email" class="form-control" id="headDelegateTwoEmail" name="headDelegateTwoEmail" ng-model="data.delegationContacts.headDelegateTwo.email" />
+                    <label class="control-label" for="schoolAddressLineTwo">Address Line Two</label>
+                    <input type="text" name="schoolAddressLineTwo" id="schoolAddressLineTwo" class="form-control" ng-model="data.schoolInfo.addressLineTwo" />
                 </div>
 
-                <div class="control-group">
-                    <label class="control-label" for="headDelegateTwoPhone">Phone</label>
-                    <input type="text" class="form-control" id="headDelegateTwoPhone" name="headDelegateTwoPhone" ng-model="data.delegationContacts.headDelegateTwo.phone"/>
-                </div>
-            </div>
-        </div>
-    </div><br>
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
-            <h4>Section III: Country Selection</h4>
-            <h5>Select as many or as few countries that your delegation is interested in. We cannot guarantee assignments but will keep them in mind.</h5>
-            <div>
-                <label for="countrySearch">Search for a Country:</label>
-                <input class="form-control" id="countrySearch" name="countrySearch" ng-model="countrySearch"/>
-            </div>
-            <div ng-if="data.countrySelection.length > 0">
-                <h5>Selected Countries:</h5>
-                <div class="row" ng-repeat="selected in data.countrySelection track by $index"><i class="fa fa-minus-circle text-danger" style="cursor: pointer; cursor: hand;" ng-click="removeMemberState($index)"></i> {{selected.country}} ({{selected.committees.length}})</div>
-                <br>
-            </div>
-        </div>
-    </div><br>
-
-    <div class="row" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="col">
-            <div class="panel-group" ng-model="panels.activePanel" role="tablist" aria-multiselectable="true" bs-collapse>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab">
-                        <h4 class="panel-title">
-                            <a bs-collapse-toggle>
-                                Toggle Country Display
-                            </a>
-                        </h4>
+                <div class="row">
+                    <div class="control-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <label class="control-label" for="schoolAddressCity">Address City</label>
+                        <input type="text" name="schoolAddressCity" id="schoolAddressCity" class="form-control" ng-model="data.schoolInfo.addressCity" />
                     </div>
-                    <div class="panel-collapse" role="tabpanel" bs-collapse-target>
-                        <div class="panel-body">
-                            <div style="height: 800px; overflow-y: auto">
-                                <table ng-show="matrix.length != 0" ng-if="matrix.length > 0"
-                                       class="table table-responsive table-bordered table-striped table-condensed" style="white-space: nowrap">
-                                    <tr>
-                                        <th class="col-xs-1 text-center">Add</th>
-                                        <th class="col-xs-1 text-center">Slots</th>
-                                        <th class="col-xs-1">Country</th>
-                                        <th class="col-xs-1 text-center">GA3</th>
-                                        <th class="col-xs-1 text-center">ECOSOC</th>
-                                        <th class="col-xs-1 text-center">UN-HABITAT</th>
-                                        <th class="col-xs-1 text-center">UNHCR-UNSRM</th>
-                                        <th class="col-xs-1 text-center">HRC-UPR</th>
-                                        <th class="col-xs-1 text-center">SC</th>
-                                        <th class="col-xs-1 text-center">ICJ</th>
-                                    </tr>
 
-                                    <tr ng-repeat="entry in matrix | filter:countrySearch track by $index" ng-if="!entry.selected">
-                                        <td class="text-info text-center">
-                                            <i class="fa fa-2x fa-plus-circle" style="cursor: pointer; cursor: hand;" ng-click="addMemberState(entry)"></i>
-                                        </td>
-                                        <td class="text-center">{{entry.committees.length}}</td>
-                                        <td>{{entry.country}}</td>
-                                        <!-- Kids, this is really bad logic here - do not try this at home... -->
-                                        <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('GA3') >= 0"></i></td>
-                                        <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('ECOSOC') >= 0"></i></td>
-                                        <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('UN-HABITAT') >= 0"></i></td>
-                                        <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('UNHCR-UNSRM') >= 0"></i></td>
-                                        <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('HRC-UPR') >= 0"></i></td>
-                                        <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('SC') >= 0"></i></td>
-                                        <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('ICJ') >= 0"></i></td>
-                                    </tr>
-                                </table>
+                    <div class="control-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <label class="control-label" for="schoolAddressZip">Address Zip Code</label>
+                        <input type="text" name="schoolAddressZip" id="schoolAddressZip" class="form-control" ng-model="data.schoolInfo.addressZip" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
+                <h4>Section II: Delegation Contact Information</h4>
+                <h5>Adviser:</h5>
+                <div class="control-group">
+                    <label class="control-label" for="adviserName">Name</label>
+                    <input type="text" class="form-control" id="adviserName" name="adviserName" ng-model="data.delegationContacts.adviser.name"/>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="adviserEmail">E-mail</label>
+                    <input type="email" id="adviserEmail" name="adviserEmail" class="form-control" ng-model="data.delegationContacts.adviser.email" />
+                </div>
+
+                <!-- need to validate -->
+                <div class="control-group">
+                    <label class="control-label" for="adviserPhone">Phone</label>
+                    <input type="text" id="adviserPhone" name="adviserPhone" class="form-control" ng-model="data.delegationContacts.adviser.phone" />
+                </div>
+                <hr style="height: 1px; background-color:#bebebe;" />
+
+                <h5>Head Delegate 1:</h5>
+                <div class="control-group">
+                    <label class="control-label" for="headDelegateOneName">Name</label>
+                    <input type="text" id="headDelegateOneName" name="headDelegateOneName" class="form-control" ng-model="data.delegationContacts.headDelegateOne.name"/>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="headDelegateOneEmail">E-mail</label>
+                    <input type="email" class="form-control" id="headDelegateOneEmail" name="headDelegateOneEmail" ng-model="data.delegationContacts.headDelegateOne.email" />
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="headDelegateOnePhone">Phone</label>
+                    <input type="text" class="form-control" id="headDelegateOnePhone" name="headDelegateOnePhone" ng-model="data.delegationContacts.headDelegateOne.phone"/>
+                </div><br>
+
+                <input type="button" class="btn btn-default" ng-click="addHeadDelegate = true" value="Add another head delegate" />
+
+                <div ng-show="addHeadDelegate" class="check-element animate-show">
+                    <hr style="height: 1px; background-color:#bebebe;"/>
+                    <h5>Head Delegate 2:</h5>
+                    <div class="control-group">
+                        <label class="control-label" for="headDelegateTwoName">Name</label>
+                        <input type="text" id="headDelegateTwoName" class="form-control" ng-model="data.delegationContacts.headDelegateTwo.name"/>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="headDelegateTwoEmail">E-mail</label>
+                        <input type="email" class="form-control" id="headDelegateTwoEmail" name="headDelegateTwoEmail" ng-model="data.delegationContacts.headDelegateTwo.email" />
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="headDelegateTwoPhone">Phone</label>
+                        <input type="text" class="form-control" id="headDelegateTwoPhone" name="headDelegateTwoPhone" ng-model="data.delegationContacts.headDelegateTwo.phone"/>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
+                <h4>Section III: Country Selection</h4>
+                <h5>Select as many or as few countries that your delegation is interested in. We cannot guarantee assignments but will keep them in mind.</h5>
+                <div>
+                    <label for="countrySearch">Search for a Country:</label>
+                    <input class="form-control" id="countrySearch" name="countrySearch" ng-model="countrySearch"/>
+                </div>
+                <div ng-if="data.countrySelection.length > 0">
+                    <h5>Selected Countries:</h5>
+                    <div class="row" ng-repeat="selected in data.countrySelection track by $index"><i class="fa fa-minus-circle text-danger" style="cursor: pointer; cursor: hand;" ng-click="removeMemberState($index)"></i> {{selected.country}} ({{selected.committees.length}})</div>
+                    <br>
+                </div>
+            </div>
+        </div><br>
+
+        <div class="row" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col">
+                <div class="panel-group" ng-model="panels.activePanel" role="tablist" aria-multiselectable="true" bs-collapse>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab">
+                            <h4 class="panel-title text-center" style="cursor: pointer; cursor: hand;" bs-collapse-toggle >
+                                Show/Hide Country Matrix
+                            </h4>
+                        </div>
+                        <div class="panel-collapse" role="tabpanel" bs-collapse-target>
+                            <div class="panel-body">
+                                <div style="height: 800px; overflow-y: auto">
+                                    <table ng-show="matrix.length != 0" ng-if="matrix.length > 0"
+                                           class="table table-responsive table-bordered table-striped table-condensed" style="white-space: nowrap">
+                                        <tr>
+                                            <th class="col-xs-1 text-center">Add</th>
+                                            <th class="col-xs-1 text-center">Slots</th>
+                                            <th class="col-xs-1">Country</th>
+                                            <th class="col-xs-1 text-center">GA3</th>
+                                            <th class="col-xs-1 text-center">ECOSOC</th>
+                                            <th class="col-xs-1 text-center">UN-HABITAT</th>
+                                            <th class="col-xs-1 text-center">UNHCR-UNSRM</th>
+                                            <th class="col-xs-1 text-center">HRC-UPR</th>
+                                            <th class="col-xs-1 text-center">SC</th>
+                                            <th class="col-xs-1 text-center">ICJ</th>
+                                        </tr>
+
+                                        <tr ng-repeat="entry in matrix | filter:countrySearch track by $index" ng-if="!entry.selected">
+                                            <td class="text-info text-center">
+                                                <i class="fa fa-2x fa-plus-circle" style="cursor: pointer; cursor: hand;" ng-click="addMemberState(entry)"></i>
+                                            </td>
+                                            <td class="text-center">{{entry.committees.length}}</td>
+                                            <td>{{entry.country}}</td>
+                                            <!-- Kids, this is really bad logic here - do not try this at home... -->
+                                            <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('GA3') >= 0"></i></td>
+                                            <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('ECOSOC') >= 0"></i></td>
+                                            <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('UN-HABITAT') >= 0"></i></td>
+                                            <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('UNHCR-UNSRM') >= 0"></i></td>
+                                            <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('HRC-UPR') >= 0"></i></td>
+                                            <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('SC') >= 0"></i></td>
+                                            <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('ICJ') >= 0"></i></td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
+                <h4>Section IV: Delegation Information</h4>
+                <div class="control-group">
+                    <label class="label-control" for="delegationSize">Intended Delegation Size</label>
+                    <input type="number" id="delegationSize" name="delegationSize" min="1" class="form-control" ng-model="data.delegationInfo.delegationSize" ng-init="data.delegationInfo.delegationSize = 1"/>
+                </div>
+
+                <!--<div class="control-group" style="width: 50%">
+                    <label for="slots" class="label-control">Requested Slots</label>
+                    <input type="number" id="slots" name="slots" class="form-control" ng-readonly="true" ng-model="data.delegationInfo.slots">
+                    <label id="slots-error" class="error" for="slots"></label>
+                </div>-->
+                <div style="width: 50%">
+                    <label for="estCost">Estimated Cost</label>
+                    <input type="text" id="estCost" class="form-control" ng-readonly="true" ng-model="data.delegationInfo.estCost" ng-bind="data.delegationInfo.estCost ='$'.concat((30 * data.delegationInfo.delegationSize) + 50)">
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
+                <input type="button" class="btn btn-default" ng-click="clear()" value="Clear" />
+                <input type="submit" class="btn btn-primary" value="Submit" />
+            </div>
+        </div>
+    </form>
+<!--</div>-->
+<div ng-if="submitSuccess">
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
-            <h4>Section IV: Delegation Information</h4>
-            <div class="control-group">
-                <label class="label-control" for="delegationSize">Intended Delegation Size</label>
-                <input type="number" id="delegationSize" name="delegationSize" min="1" class="form-control" ng-model="data.delegationInfo.delegationSize" ng-init="data.delegationInfo.delegationSize = 1"/>
-            </div>
-
-            <!--<div class="control-group" style="width: 50%">
-                <label for="slots" class="label-control">Requested Slots</label>
-                <input type="number" id="slots" name="slots" class="form-control" ng-readonly="true" ng-model="data.delegationInfo.slots">
-                <label id="slots-error" class="error" for="slots"></label>
-            </div>-->
-            <div style="width: 50%">
-                <label for="estCost">Estimated Cost</label>
-                <input type="text" id="estCost" class="form-control" ng-readonly="true" ng-model="data.delegationInfo.estCost" ng-bind="data.delegationInfo.estCost ='$'.concat((30 * data.delegationInfo.delegationSize) + 50)">
+            <div class="panel panel-success">
+                <div class="panel-heading text-center"><h3 class="panel-title">Registration Success</h3></div>
+                <div class="panel-body">
+                    Thank you for registering for WASMUN 2017. You will hear back from us shortly. For any other questions about the conference, please email the Secretary-General <a href="mailto:sg@wasmun.org">sg@wasmun.org</a>.
+                </div>
             </div>
         </div>
     </div>
-    <br>
-
+</div>
+<div ng-if="submitError">
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
-            <input type="button" class="btn btn-default" ng-click="clear()" value="Clear" />
-            <input type="submit" class="btn btn-primary" value="Submit" />
+            <div class="panel panel-default panel-danger">
+                <div class="panel-heading text-center"><h3 class="panel-title">Registration Failed</h3></div>
+                <div class="panel-body">
+                    There was an error with submitting your registration. Please immediately email the USGIT: <a href="mailto:sg@wasmun.org">usgit@wasmun.org</a>.
+                </div>
+            </div>
         </div>
     </div>
-</form>
+</div>
+<div ng-if="connection">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
+            <div class="panel panel-default panel-danger">
+                <div class="panel-heading text-center"><h3 class="panel-title">Registration Failed</h3></div>
+                <div class="panel-body">
+                    There was an error with submitting your registration. Please immediately email the USGIT: <a href="mailto:sg@wasmun.org">usgit@wasmun.org</a>.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

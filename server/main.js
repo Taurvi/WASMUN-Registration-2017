@@ -35,6 +35,10 @@ io.on('connection', function(socket){
 
     socket.on('sendRegistration', function(data) {
         console.log('[Main] Registration data received from client.')
-        firebase.postRegistration(data);
+        firebase.postRegistration(data).then(function success() {
+            socket.emit('registrationSuccess');
+        }, function error() {
+            socket.emit('registrationFailed');
+        });
     });
 });

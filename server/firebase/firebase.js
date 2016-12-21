@@ -81,24 +81,23 @@ var Firebase = function () {
 };
 
 Firebase.prototype.postRegistration = function(data) {
+    var deferred = Q.defer();
     _authFirebase().then(function success() {
         var submitted = new Date();
         data.date = submitted.toString();
         console.log('[FirebasePostRegistration] Raw data received from client.');
-        database.ref('/2017/').push(data);
-        console.log('[FirebasePostRegistration] Submitted data to server.');
+        database.ref('/2017/').push(data).then(function success() {
+            console.log('[FirebasePostRegistration] Submitted data to server.');
+            deferred.resolve();
+        }, function error() {
+            console.log('[FirebasePostRegistration] Failed to submit data to server.');
+            deferred.reject();
+        });
     }, function error() {
         console.log('[FirebasePostRegistration] Failed to auth.');
+        deferred.reject();
     });
-
-    // Read temp JSON file
-    /*_readClientDataMock().then(function success(data) {
-        database.ref('/2017/').push(data);
-        // database.set(data);
-        console.log('[FirebasePostRegistration] Submitted mock data');
-    }, function error(err) {
-        console.log('[FirebasePostRegistration] Error reading mock data');
-    });*/
+    return deferred.promise;
 };
 
 exports.Firebase = Firebase;
