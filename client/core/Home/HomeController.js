@@ -36,6 +36,8 @@ RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert',
         $scope.submitError = true;
     });
 
+    $scope.toggleMatrix = false;
+
     // Form
     $('#form').validate(
         {

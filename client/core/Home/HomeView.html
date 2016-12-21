@@ -77,7 +77,7 @@
                     <input type="text" class="form-control" id="headDelegateOnePhone" name="headDelegateOnePhone" ng-model="data.delegationContacts.headDelegateOne.phone"/>
                 </div><br>
 
-                <input type="button" class="btn btn-default" ng-click="addHeadDelegate = true" value="Add another head delegate" />
+                <input type="button" class="btn btn-default" ng-click="addHeadDelegate = true" ng-disabled="addHeadDelegate" value="Add another head delegate" />
 
                 <div ng-show="addHeadDelegate" class="check-element animate-show">
                     <hr style="height: 1px; background-color:#bebebe;"/>
@@ -107,6 +107,8 @@
                 <div>
                     <label for="countrySearch">Search for a Country:</label>
                     <input class="form-control" id="countrySearch" name="countrySearch" ng-model="countrySearch"/>
+                    <br>
+                    <input type="button" class="btn btn-default" ng-click="toggleMatrix = !toggleMatrix" value="Toggle Country Matrix"/>
                 </div>
                 <div ng-if="data.countrySelection.length > 0">
                     <h5>Selected Countries:</h5>
@@ -116,51 +118,42 @@
             </div>
         </div><br>
 
-        <div class="row" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="toggleMatrix">
             <div class="col">
-                <div class="panel-group" ng-model="panels.activePanel" role="tablist" aria-multiselectable="true" bs-collapse>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab">
-                            <h4 class="panel-title text-center" style="cursor: pointer; cursor: hand;" bs-collapse-toggle >
-                                Show/Hide Country Matrix
-                            </h4>
-                        </div>
-                        <div class="panel-collapse" role="tabpanel" bs-collapse-target>
-                            <div class="panel-body">
-                                <div style="height: 800px; overflow-y: auto">
-                                    <table ng-show="matrix.length != 0" ng-if="matrix.length > 0"
-                                           class="table table-responsive table-bordered table-striped table-condensed" style="white-space: nowrap">
-                                        <tr>
-                                            <th class="col-xs-1 text-center">Add</th>
-                                            <th class="col-xs-1 text-center">Slots</th>
-                                            <th class="col-xs-1">Country</th>
-                                            <th class="col-xs-1 text-center">GA3</th>
-                                            <th class="col-xs-1 text-center">ECOSOC</th>
-                                            <th class="col-xs-1 text-center">UN-HABITAT</th>
-                                            <th class="col-xs-1 text-center">UNHCR-UNSRM</th>
-                                            <th class="col-xs-1 text-center">HRC-UPR</th>
-                                            <th class="col-xs-1 text-center">SC</th>
-                                            <th class="col-xs-1 text-center">ICJ</th>
-                                        </tr>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div style="height: 800px; overflow-y: auto">
+                            <table ng-show="matrix.length != 0" ng-if="matrix.length > 0"
+                                   class="table table-responsive table-bordered table-striped table-condensed" style="white-space: nowrap">
+                                <tr>
+                                    <th class="col-xs-1 text-center">Add</th>
+                                    <th class="col-xs-1 text-center">Slots</th>
+                                    <th class="col-xs-1">Country</th>
+                                    <th class="col-xs-1 text-center">GA3</th>
+                                    <th class="col-xs-1 text-center">ECOSOC</th>
+                                    <th class="col-xs-1 text-center">UN-HABITAT</th>
+                                    <th class="col-xs-1 text-center">UNHCR-UNSRM</th>
+                                    <th class="col-xs-1 text-center">HRC-UPR</th>
+                                    <th class="col-xs-1 text-center">SC</th>
+                                    <th class="col-xs-1 text-center">ICJ</th>
+                                </tr>
 
-                                        <tr ng-repeat="entry in matrix | filter:countrySearch track by $index" ng-if="!entry.selected">
-                                            <td class="text-info text-center">
-                                                <i class="fa fa-2x fa-plus-circle" style="cursor: pointer; cursor: hand;" ng-click="addMemberState(entry)"></i>
-                                            </td>
-                                            <td class="text-center">{{entry.committees.length}}</td>
-                                            <td>{{entry.country}}</td>
-                                            <!-- Kids, this is really bad logic here - do not try this at home... -->
-                                            <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('GA3') >= 0"></i></td>
-                                            <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('ECOSOC') >= 0"></i></td>
-                                            <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('UN-HABITAT') >= 0"></i></td>
-                                            <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('UNHCR-UNSRM') >= 0"></i></td>
-                                            <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('HRC-UPR') >= 0"></i></td>
-                                            <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('SC') >= 0"></i></td>
-                                            <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('ICJ') >= 0"></i></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
+                                <tr ng-repeat="entry in matrix | filter:countrySearch track by $index" ng-if="!entry.selected">
+                                    <td class="text-info text-center">
+                                        <i class="fa fa-2x fa-plus-circle" style="cursor: pointer; cursor: hand;" ng-click="addMemberState(entry)"></i>
+                                    </td>
+                                    <td class="text-center">{{entry.committees.length}}</td>
+                                    <td>{{entry.country}}</td>
+                                    <!-- Kids, this is really bad logic here - do not try this at home... -->
+                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('GA3') >= 0"></i></td>
+                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('ECOSOC') >= 0"></i></td>
+                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('UN-HABITAT') >= 0"></i></td>
+                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('UNHCR-UNSRM') >= 0"></i></td>
+                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('HRC-UPR') >= 0"></i></td>
+                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('SC') >= 0"></i></td>
+                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('ICJ') >= 0"></i></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
