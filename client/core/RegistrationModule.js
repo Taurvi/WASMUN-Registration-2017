@@ -7,13 +7,13 @@ var RegistrationModule = angular.module('RegistrationModule',
         'mgcrea.ngStrap'
     ]);
 
-RegistrationModule.factory('mySocket', ['socketFactory', function (socketFactory) {
-    var myIoSocket = io.connect('localhost:3000', {transports: ['websocket', 'polling', 'flashsocket']});
+/*RegistrationModule.factory('mySocket', ['socketFactory', function (socketFactory) {
+    var myIoSocket = io.connect('localhost:3000');
     var mySocket = socketFactory({
         ioSocket: myIoSocket
     });
     return mySocket;
-}]);
+}]);*/
 
 RegistrationModule.config([
     '$stateProvider',

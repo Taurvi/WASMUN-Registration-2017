@@ -1,6 +1,9 @@
 'use strict';
+
+var mySocket = io('http://register.wasmun.org:3000');
+
 RegistrationModule = angular.module('RegistrationModule');
-RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert', 'RegistrationClass', function(mySocket, $scope, $alert, RegistrationClass) {
+RegistrationModule.controller('HomeController', ['$scope', '$alert', 'RegistrationClass', function($scope, $alert, RegistrationClass) {
     var alerts = {};
     $scope.data = {};
     $scope.data.countrySelection = [];
