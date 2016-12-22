@@ -6,7 +6,7 @@
 </h1>
 <br>
 <!--<div >-->
-    <form name="form" id="form" role="form" class="form form-horizontal" ng-hide="submitSuccess || submitError" ng-submit="submit(data)">
+    <form name="form" id="form" role="form" class="form form-horizontal" ng-hide="connectionError || (submitSuccess || submitError)" ng-submit="submit(data)">
         <div class="row">
             <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
                 <h4>Section I: School Information</h4>
@@ -190,7 +190,7 @@
         </div>
     </form>
 <!--</div>-->
-<div ng-if="submitSuccess">
+<div ng-if="submitSuccess && !connectionError">
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
             <div class="panel panel-success">
@@ -202,7 +202,7 @@
         </div>
     </div>
 </div>
-<div ng-if="submitError">
+<div ng-if="submitError && !connectionError">
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
             <div class="panel panel-default panel-danger">
@@ -214,13 +214,13 @@
         </div>
     </div>
 </div>
-<div ng-if="connection">
+<div ng-if="connectionError">
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
             <div class="panel panel-default panel-danger">
-                <div class="panel-heading text-center"><h3 class="panel-title">Registration Failed</h3></div>
+                <div class="panel-heading text-center"><h3 class="panel-title">Connection Failed</h3></div>
                 <div class="panel-body">
-                    There was an error with submitting your registration. Please immediately email the USGIT: <a href="mailto:sg@wasmun.org">usgit@wasmun.org</a>.
+                    There was an error with your connection. Please immediately email the USGIT: <a href="mailto:sg@wasmun.org">usgit@wasmun.org</a>.
                 </div>
             </div>
         </div>

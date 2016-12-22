@@ -7,6 +7,7 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
     var alerts = {};
     $scope.data = {};
     $scope.data.countrySelection = [];
+    $scope.connectionError = false;
 
     alerts.errorConnect = $alert({title: 'Error 404:', content: 'Unable to connect to server. Please email usgit@wasmun.org immediately.', placement: 'top-right', type: 'danger', show: false});
     alerts.successConnect = $alert({title: 'Connection Verified:', content: 'Server uplink has been established.', placement: 'top-right', type: 'success', show: false, duration: 5});
@@ -14,6 +15,7 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
     mySocket.on('connect_error', function() {
         alerts.successConnect.hide();
         alerts.errorConnect.show();
+        $scope.connectionError = true;
     });
 
     mySocket.on('connect', function() {
@@ -21,6 +23,7 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
         alerts.errorConnect.hide();
         alerts.successConnect.show();
         mySocket.emit('getMatrix');
+        $scope.connectionError = false;
     });
 
     $scope.matrix = [];
