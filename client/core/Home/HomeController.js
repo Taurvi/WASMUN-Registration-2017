@@ -9,7 +9,7 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
     $scope.data.countrySelection = [];
     $scope.connectionError = false;
 
-    alerts.errorConnect = $alert({title: 'Error 404:', content: 'Unable to connect to server. Please email usgit@wasmun.org immediately.', placement: 'top-right', type: 'danger', show: false});
+    alerts.errorConnect = $alert({title: 'Error 404:', content: 'Unable to connect to server. Please email usgit@wasmun.org immediately.', placement: 'top-right', type: 'danger', show: false, duration: 5});
     alerts.successConnect = $alert({title: 'Connection Verified:', content: 'Server uplink has been established.', placement: 'top-right', type: 'success', show: false, duration: 5});
 
     mySocket.on('connect_error', function() {
