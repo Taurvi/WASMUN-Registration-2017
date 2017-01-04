@@ -2,7 +2,7 @@
     <img src="imgs/logo-h-medium.png" />
 </h1>
 <h1 class="text-center">
-    2017 - Registration
+    2017 - Registration {{status.success}}
 </h1>
 <br>
 <h5 class="text-center">
@@ -10,7 +10,7 @@
 </h5>
 <br>
 <!--<div >-->
-    <form name="form" id="form" role="form" class="form form-horizontal" ng-hide="connectionError || (submitSuccess || submitError)" ng-submit="submit(data)">
+    <form name="form" id="form" role="form" class="form form-horizontal" ng-hide="connectionError || (status.success || status.error)" ng-submit="submit(data)">
         <div class="row">
             <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
                 <h4>Section I: School Information</h4>
@@ -194,7 +194,7 @@
         </div>
     </form>
 <!--</div>-->
-<div ng-if="submitSuccess && !connectionError">
+<div ng-if="status.success && !connectionError">
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
             <div class="panel panel-success">
@@ -206,7 +206,7 @@
         </div>
     </div>
 </div>
-<div ng-if="submitError && !connectionError">
+<div ng-if="status.error && !connectionError">
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4 col-centered">
             <div class="panel panel-default panel-danger">
