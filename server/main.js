@@ -33,12 +33,16 @@ io.on('connection', function(socket){
             });
     });
 
-    socket.on('sendRegistration', function(data) {
-        console.log('[Main] Registration data received from client.')
+    var postRegistration = function(data) {
         firebase.postRegistration(data).then(function success() {
             socket.emit('registrationSuccess');
         }, function error() {
             socket.emit('registrationFailed');
         });
+    }
+
+    socket.on('sendRegistration', function(data) {
+        console.log('[Main] Registration data received from client.')
+        postRegistration(data);
     });
 });

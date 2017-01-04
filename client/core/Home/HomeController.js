@@ -1,13 +1,17 @@
 'use strict';
 
-var mySocket = io('http://register.wasmun.org:3000');
+// var mySocket = io('http://localhost:3000');
 
 RegistrationModule = angular.module('RegistrationModule');
-RegistrationModule.controller('HomeController', ['$scope', '$alert', 'RegistrationClass', function($scope, $alert, RegistrationClass) {
+RegistrationModule.controller('HomeController', ['$scope', '$alert', 'RegistrationClass', 'mySocket', function($scope, $alert, RegistrationClass, mySocket) {
     var alerts = {};
     $scope.data = {};
     $scope.data.countrySelection = [];
     $scope.connectionError = false;
+    $scope.status = {};
+    $scope.status.success = false;
+    $scope.status.error = false;
+
 
     alerts.errorConnect = $alert({title: 'Error 404:', content: 'Unable to connect to server. Please email usgit@wasmun.org immediately.', placement: 'top-right', type: 'danger', show: false, duration: 5});
     alerts.successConnect = $alert({title: 'Connection Verified:', content: 'Server uplink has been established.', placement: 'top-right', type: 'success', show: false, duration: 5});
@@ -31,15 +35,15 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
         $scope.matrix = JSON.parse(data);
     });
 
-    $scope.submitSuccess = false;
-    $scope.submitError = false;
 
     mySocket.on('registrationSuccess', function() {
-       $scope.submitSuccess = true;
+        console.log('registration success');
+        $scope.status.success = true;
+        console.log($scope.status.success);
     });
 
     mySocket.on('registrationFailed', function() {
-        $scope.submitError = true;
+        $scope.status.error = true;
     });
 
     $scope.toggleMatrix = false;
@@ -152,9 +156,9 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
 
         var inputCountrySelect = data.countrySelection;
         inputCountrySelect.map(function(entry) {
-           countrySelect.addCountry(entry.country, entry.committees);
+            countrySelect.addCountry(entry.country, entry.committees);
         });
-        
+
         var inputDelegation = data.delegationInfo;
         delegation.setSize(inputDelegation.delegationSize);
         delegation.setCost(inputDelegation.estCost);
