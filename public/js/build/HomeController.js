@@ -1,21 +1,16 @@
 'use strict';
-
-var mySocket = io('http://register.wasmun.org:3000');
-
 RegistrationModule = angular.module('RegistrationModule');
-RegistrationModule.controller('HomeController', ['$scope', '$alert', 'RegistrationClass', function($scope, $alert, RegistrationClass) {
+RegistrationModule.controller('HomeController', ['mySocket', '$scope', '$alert', 'RegistrationClass', function(mySocket, $scope, $alert, RegistrationClass) {
     var alerts = {};
     $scope.data = {};
     $scope.data.countrySelection = [];
-    $scope.connectionError = false;
 
-    alerts.errorConnect = $alert({title: 'Error 404:', content: 'Unable to connect to server. Please email usgit@wasmun.org immediately.', placement: 'top-right', type: 'danger', show: false, duration: 5});
+    alerts.errorConnect = $alert({title: 'Error 404:', content: 'Unable to connect to server. Please email usgit@wasmun.org immediately.', placement: 'top-right', type: 'danger', show: false});
     alerts.successConnect = $alert({title: 'Connection Verified:', content: 'Server uplink has been established.', placement: 'top-right', type: 'success', show: false, duration: 5});
 
     mySocket.on('connect_error', function() {
         alerts.successConnect.hide();
         alerts.errorConnect.show();
-        $scope.connectionError = true;
     });
 
     mySocket.on('connect', function() {
@@ -23,26 +18,12 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
         alerts.errorConnect.hide();
         alerts.successConnect.show();
         mySocket.emit('getMatrix');
-        $scope.connectionError = false;
     });
 
     $scope.matrix = [];
     mySocket.on('sendMatrix', function(data) {
         $scope.matrix = JSON.parse(data);
     });
-
-    $scope.submitSuccess = false;
-    $scope.submitError = false;
-
-    mySocket.on('registrationSuccess', function() {
-       $scope.submitSuccess = true;
-    });
-
-    mySocket.on('registrationFailed', function() {
-        $scope.submitError = true;
-    });
-
-    $scope.toggleMatrix = false;
 
     // Form
     $('#form').validate(
@@ -160,22 +141,40 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
         delegation.setCost(inputDelegation.estCost);
 
         mySocket.emit('sendRegistration', register);
-        //$scope.data = {};
-        //$('html, body').animate({ scrollTop: 0 }, 'fast');
+        $scope.data = {};
+        $('html, body').animate({ scrollTop: 0 }, 'fast');
     };
 
     $scope.clear = function(form) {
         $('#form').validate().resetForm();
         $("div").removeClass("has-error has-success");
         $scope.data = {};
-        //$('html, body').animate({ scrollTop: 0 }, 'fast');
-        //$scope.data = {};
+        $('html, body').animate({ scrollTop: 0 }, 'fast');
+    //var test = new RegistrationClass;
+    //test.getDelegationInfo().setSize(10);
+    //test.getDelegationInfo().setCost(100);
+    //test.getDelegationInfo().setDiscount(true);
+    //test.getSchoolInfo().setName('foo');
+    //test.getSchoolInfo().setAddress('baz');
+    //test.getCountrySelection().addCountry('foo', ['baz', 'qux']);
+    //test.getCountrySelection().addCountry('bar', ['qux']);
+    //test.getDelegationContacts().setAdvisor('foo', 'bar@baz', '1234567890');
+    //test.getDelegationContacts().addHeadDelegate('foo', 'bar@baz', '1234567890');
+    //test.getDelegationContacts().addHeadDelegate('qux', 'baz@bar', '0987654321');
+    //
+    //console.log(test.stringify());
+    //
+    //$scope.testEmit = function() {
+    //    mySocket.emit('sendRegistration', test);
     };
 
 
     $scope.addMemberState = function (entry) {
         var originalIndex = $scope.matrix.indexOf(entry);
         $scope.matrix[originalIndex].selected = true;
+        /*var selection = {};
+        selection.country = country;
+        selection.committees = committees;*/
         $scope.data.countrySelection.push($scope.matrix[originalIndex]);
     };
 
