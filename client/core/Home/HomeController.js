@@ -126,6 +126,9 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
         });
 
     var submit = function(data) {
+        $('#spinner').css('visibility', 'visible');
+        $('#btnClear').prop('disabled', true);
+        $('#btnSubmit').prop('disabled', true);
         var register = new RegistrationClass;
         var school = register.getSchoolInfo();
         var countrySelect = register.getCountrySelection();
@@ -163,7 +166,7 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
         delegation.setSize(inputDelegation.delegationSize);
         delegation.setCost(inputDelegation.estCost);
 
-        mySocket.emit('sendRegistration', register);
+        //mySocket.emit('sendRegistration', register);
         //$scope.data = {};
         //$('html, body').animate({ scrollTop: 0 }, 'fast');
     };
