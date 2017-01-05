@@ -166,7 +166,7 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
         delegation.setSize(inputDelegation.delegationSize);
         delegation.setCost(inputDelegation.estCost);
 
-        //mySocket.emit('sendRegistration', register);
+        mySocket.emit('sendRegistration', register);
         //$scope.data = {};
         //$('html, body').animate({ scrollTop: 0 }, 'fast');
     };
