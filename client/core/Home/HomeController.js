@@ -114,6 +114,9 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
         });
 
     var submit = function(data) {
+        $('#spinner').css('visibility', 'visible');
+        $('#btnClear').prop('disabled', true);
+        $('#btnSubmit').prop('disabled', true);
         var register = new RegistrationClass;
         var school = register.getSchoolInfo();
         var countrySelect = register.getCountrySelection();
@@ -152,16 +155,16 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
         delegation.setCost(inputDelegation.estCost);
 
         mySocket.emit('sendRegistration', register);
-        $scope.data = {};
-        $('html, body').animate({ scrollTop: 0 }, 'fast');
+        //$scope.data = {};
+        //$('html, body').animate({ scrollTop: 0 }, 'fast');
     };
 
     $scope.clear = function(form) {
         $('#form').validate().resetForm();
         $("div").removeClass("has-error has-success");
         $scope.data = {};
-        $('html, body').animate({ scrollTop: 0 }, 'fast');
-        $scope.data = {};
+        //$('html, body').animate({ scrollTop: 0 }, 'fast');
+        //$scope.data = {};
     };
 
 
