@@ -4,7 +4,6 @@
 
 RegistrationModule = angular.module('RegistrationModule');
 RegistrationModule.controller('HomeController', ['$scope', '$alert', 'RegistrationClass', 'mySocket', function($scope, $alert, RegistrationClass, mySocket) {
-    var alerts = {};
     $scope.data = {};
     $scope.data.countrySelection = [];
     $scope.connectionError = false;
@@ -12,20 +11,11 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
     $scope.status.success = false;
     $scope.status.error = false;
 
-
-    alerts.errorConnect = $alert({title: 'Error 404:', content: 'Unable to connect to server. Please email usgit@wasmun.org immediately.', placement: 'top-right', type: 'danger', show: false, duration: 5});
-    alerts.successConnect = $alert({title: 'Connection Verified:', content: 'Server uplink has been established.', placement: 'top-right', type: 'success', show: false, duration: 5});
-
     mySocket.on('connect_error', function() {
-        alerts.successConnect.hide();
-        alerts.errorConnect.show();
         $scope.connectionError = true;
     });
 
     mySocket.on('connect', function() {
-        console.log('socket connected');
-        alerts.errorConnect.hide();
-        alerts.successConnect.show();
         mySocket.emit('getMatrix');
         $scope.connectionError = false;
     });
@@ -37,9 +27,7 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
 
 
     mySocket.on('registrationSuccess', function() {
-        console.log('registration success');
         $scope.status.success = true;
-        console.log($scope.status.success);
     });
 
     mySocket.on('registrationFailed', function() {
