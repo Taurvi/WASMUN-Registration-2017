@@ -126,7 +126,7 @@ RegistrationModule.controller('HomeController', ['$scope', '$alert', 'Registrati
         var inputSchool = data.schoolInfo;
         school.setName(inputSchool.name);
 
-        if (inputSchool.addressLineTwo != "") {
+        if (inputSchool.addressLineTwo) {
             school.setAddress(inputSchool.addressLineOne + " " + inputSchool.addressLineTwo + " " +
                 inputSchool.addressCity + " " + inputSchool.addressZip);
         } else {

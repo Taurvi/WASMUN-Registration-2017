@@ -6,3 +6,42 @@
 #spinner {
     visibility: hidden;
 }
+
+.registration table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.registration .table > thead > tr > th {
+    border-bottom: none;
+}
+
+.registration thead tr td {
+    color: #999;
+}
+
+.registration td {
+    word-wrap: break-word;
+}
+
+.country {
+    overflow-y: scroll;
+    height: 80px;
+}
+
+hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-top: 1px solid #d3d3d3;
+}
+
+@media (min-width: 768px) {
+    .registration .table {
+        margin: 0 auto;
+        width: 80%;
+    }
+
+    .registration th {
+        width: 25%;
+    }
+}
