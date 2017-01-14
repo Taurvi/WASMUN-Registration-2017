@@ -45,4 +45,11 @@ io.on('connection', function(socket){
         console.log('[Main] Registration data received from client.')
         postRegistration(data);
     });
+
+    socket.on('requestData', function() {
+        firebase.getRegistrationData().then(function success(data) {
+            socket.emit('getData', data.val());
+        });
+    });
 });
+

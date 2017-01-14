@@ -54,6 +54,7 @@ finalized.baseHTMLProd = '<base href="/"/>';
 // JS
 src.js.push(dir.client + 'core/RegistrationModule.js');
 src.js.push(dir.client + 'core/Home/HomeController.js');
+src.js.push(dir.client + 'core/Menu/MenuController.js');
 src.js.push(dir.client + 'core/Admin/AdminController.js');
 src.js.push(dir.client + 'core/Footer/FooterController.js');
 // JS Shared Classes
@@ -97,6 +98,7 @@ src.css.push(dir.client + 'assets/css/**/*.css');
 src.fonts.push(dir.bower + 'components-font-awesome/fonts/fontawesome-webfont.*')
 // Views
 src.views.push(dir.client + 'core/Home/HomeView.html');
+src.views.push(dir.client + 'core/Menu/MenuView.html');
 src.views.push(dir.client + 'core/Admin/AdminView.html');
 src.views.push(dir.client + 'core/Footer/FooterView.html');
 // Images

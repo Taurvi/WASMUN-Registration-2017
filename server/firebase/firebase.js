@@ -106,4 +106,17 @@ Firebase.prototype.postRegistration = function(data) {
     return deferred.promise;
 };
 
+Firebase.prototype.getRegistrationData = function() {
+    var deferred = Q.defer();
+    _authFirebase().then(function success() {
+        console.log('[getRegistrationData] Data retrieved from server.');
+        var data = database.ref('/2017/').once('value');
+        deferred.resolve(data);
+    }, function error() {
+        console.log('[getRegistrationData] Failed to auth.');
+        deferred.reject('error');
+    });
+    return deferred.promise;
+}
+
 exports.Firebase = Firebase;
