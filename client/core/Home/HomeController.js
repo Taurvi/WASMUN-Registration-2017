@@ -1,7 +1,5 @@
 'use strict';
 
-// var mySocket = io('http://localhost:3000');
-
 RegistrationModule = angular.module('RegistrationModule');
 RegistrationModule.controller('HomeController', ['$scope', '$alert', 'RegistrationClass', 'mySocket', function($scope, $alert, RegistrationClass, mySocket) {
     $scope.data = {};

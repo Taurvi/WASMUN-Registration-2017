@@ -133,13 +133,13 @@
                                     <th class="col-xs-1 text-center">Add</th>
                                     <th class="col-xs-1 text-center">Slots</th>
                                     <th class="col-xs-1">Country</th>
-                                    <th class="col-xs-1 text-center">GA3</th>
-                                    <th class="col-xs-1 text-center">ECOSOC</th>
-                                    <th class="col-xs-1 text-center">UN-HABITAT</th>
-                                    <th class="col-xs-1 text-center">UNHCR-UNSRM</th>
-                                    <th class="col-xs-1 text-center">HRC-UPR</th>
-                                    <th class="col-xs-1 text-center">SC</th>
+                                    <th class="col-xs-1 text-center">COP</th>
+                                    <th class="col-xs-1 text-center">CTSD</th>
+                                    <th class="col-xs-1 text-center">GA2</th>
                                     <th class="col-xs-1 text-center">ICJ</th>
+                                    <th class="col-xs-1 text-center">SC</th>
+                                    <th class="col-xs-1 text-center">UN-W</th>
+                                    <th class="col-xs-1 text-center">FAO</th>
                                 </tr>
 
                                 <tr ng-repeat="entry in matrix | filter:countrySearch track by $index" ng-if="!entry.selected">
@@ -149,13 +149,13 @@
                                     <td class="text-center">{{entry.committees.length}}</td>
                                     <td>{{entry.country}}</td>
                                     <!-- Kids, this is really bad logic here - do not try this at home... -->
-                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('GA3') >= 0"></i></td>
-                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('ECOSOC') >= 0"></i></td>
-                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('UN-HABITAT') >= 0"></i></td>
-                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('UNHCR-UNSRM') >= 0"></i></td>
-                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('HRC-UPR') >= 0"></i></td>
-                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('SC') >= 0"></i></td>
+                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('COP') >= 0"></i></td>
+                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('CTSD') >= 0"></i></td>
+                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('GA2') >= 0"></i></td>
                                     <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('ICJ') >= 0"></i></td>
+                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('SC') >= 0"></i></td>
+                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('UN-W') >= 0"></i></td>
+                                    <td class="col-xs-1 text-center"><i class="fa fa-user text-success" ng-if="entry.committees.indexOf('FAO') >= 0"></i></td>
                                 </tr>
                             </table>
                         </div>
