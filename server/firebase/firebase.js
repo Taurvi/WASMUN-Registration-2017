@@ -53,7 +53,7 @@ var _authFirebase = function() {
 
 var _register = function(data) {
     var deferred = Q.defer();
-    database.ref('/2017/').push(data).then(function success() {
+    database.ref('/2019/').push(data).then(function success() {
         console.log('[FirebasePostRegistration] Submitted data to server.');
         deferred.resolve('success');
     }, function error() {
@@ -110,7 +110,7 @@ Firebase.prototype.getRegistrationData = function() {
     var deferred = Q.defer();
     _authFirebase().then(function success() {
         console.log('[getRegistrationData] Data retrieved from server.');
-        var data = database.ref('/2017/').once('value');
+        var data = database.ref('/2019/').once('value');
         deferred.resolve(data);
     }, function error() {
         console.log('[getRegistrationData] Failed to auth.');
